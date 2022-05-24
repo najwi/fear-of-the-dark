@@ -1,13 +1,15 @@
 # 1. Tytuł
-Fear of the dark
+  Fear of the dark
 
 # 2. Przegląd gry
 ## 2.1 Koncept gry
+  - Gra 2D typu dungeon crawler
+  - Widok z góry
+  - 
 
 ## 2.2 Gatunek
   Rougelike, strzelanka
-## 2.3 Docelowi odbiorcy
-
+  
 ## 2.4 Przepływ gry
 
 ## 2.5 Wygląd i odczucia gracza
@@ -21,60 +23,58 @@ Fear of the dark
 ### 3.1.3 Struktura łamigłówek
 
 ### 3.1.4 Cele gry
+  Celem gry jest pokonanie Beelzebossa i odzyskanie Gitary Przeznaczenia.
 
 ### 3.1.5 Przepływ gry
 
 ## 3.2 Mechaniki
-### 3.2.1 Fizyka
+### 3.2.1 Ruch w grze
+  Ruch w dowolnym z czeterch kierunków: lewo, prawo, góra, dół. Ograniczony przez obiekty na planszy i ściany.
+  
+### 3.2.2 Przedmioty
+  - Serduszko - Uzupełnia brakujące zdrowie gracza.
+  - Bomba - Pozwala na wysadzanie terenu.
+  - Nutka - Waluta.
+  - Kostka - Zwiększa statystyki gracza.
+  - Gitara - Ostateczny przedmiot do zdobycia, zdobycie kończy grę.
 
-### 3.2.2 Ruch w grze
+### 3.2.3 Akcje i ich kontrola
 
-### 3.2.3 Przedmioty
+### 3.2.4 Walka
 
-### 3.2.4 Akcje i ich kontrola
-
-### 3.2.5 Walka
-
-### 3.2.6 Ekonomia
-
-### 3.2.7 Przepływ ekranów
+### 3.2.5 Ekonomia
+  Zbieranie nutek z przeciwników i wydawanie ich w sklepie.
 
 ## 3.3 Opcje Gry
-
-## 3.4 Powtórki i zapisywanie
-
-## 3.5 Cheaty i easter eggi
-
+  Zmiana głośności.
+  
 # 4. Fabuła i postacie
-## 4.1 Historia i narrator
+## 4.1 Historia
+  Gra osadzona w świecie współczesnym. Głównym bohaterem jest profesjonalny gitarzysta zespołu metalowego David. Pewnego dnia po koncercie, do jego autokaru włamały się demony i sam Beelzeboss ukradł mu gitarę przeznaczenia, którą David musi teraz odzyskać.
 
 ## 4.2 Świat
-### 4.2.1 Ogólny wygląd świata
-
-### 4.2.2 Obszary
-
-## 4.3 Postacie
-
-# 5. Poziomy
-## 5.1 Poziomy
-  Mapy losowo generowane z przygotowanych wcześniej, wymagane jest pokonanie przeciwników żeby można było przejść do następnej planszy.
+  Świat w podziemiach, mroczny. Mapy losowo generowane z przygotowanych wcześniej, wymagane jest pokonanie przeciwników żeby można było przejść do następnej planszy.
   Plansze małe, w większości zawierające przeciwników. Plansze specjalne (początkowa, z bossem).
+  
+## 4.3 Postacie
+  David - Głowny bohater, któremu diabeł ukradł gitarę. Posiada żelazną wolę i niezwykłe umiejętności gitarowe.
 
 ## 5.2 Samouczek
   Zgodnie z tradycją rougelike bez samuczka.
 
 # 6. Interfejs
 ## 6.1 System interfejsu użytkownika
-  W czasie gry wyświetlanie aktualnego i maksymalnego stanu zdrowia gracza oraz wyświetlanie przedmiotów i wzmocnień gracza.
+  W czasie gry wyświetlanie aktualnego i maksymalnego stanu zdrowia gracza oraz wyświetlanie przedmiotów i statystyk gracza. <br />
+  W czasie walki z bossem wyświetlanie punktów życia bossa.
 
 ## 6.2 Kontroler
   Ruchy i zachowania gracza sterowane za pomocą klawiatury. Interfejs sterowany za pomocą klawiatury lub myszki.
   
 ## 6.3 Muzyka i dźwięk
-  Będą.
+  Muzyka spokojna w tle podczas przechodzenia poziomów i muzyka metal/rock podczas walki z bossem.
 
 ## 6.4 System pomocy
-  W dowolnym momencie możliwość sprawdzenia skrótów klawiszowych.
+  W dowolnym momencie możliwość sprawdzenia skrótów klawiszowych w menu.
 
 # 7. Sztuczna inteligencja
 ## 7.1 SI przeciwników
@@ -91,8 +91,8 @@ czy przeciwnik biegnący na gracza i robiący uniki. Przeciwnik z tarczą, któr
 ## 8.1 Sprzęt docelowy
 
 ## 8.2 Silnik gry, środowisko programistyczne
-  Silnik: Unity 2020
-  Środowisko: Visual Studio 2019
+  - Silnik: Unity 2020  
+  - Środowisko: Visual Studio 2019
 
 ## 8.3 Wymagania sieciowe
 
