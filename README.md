@@ -1,49 +1,47 @@
-# 1. Tytuł
+# 1. Tytuł i autorzy
+## 1.1 Tytuł
   Fear of the dark
+  
+## 1.2 Autorzy
+   - Bartłomiej Jagiełło
+   - Michał Najwer
+   - Maciej Kopiński
 
 # 2. Przegląd gry
 ## 2.1 Koncept gry
   - Gra 2D typu dungeon crawler
   - Widok z góry
-  - 
+  - Mroczny motyw
 
 ## 2.2 Gatunek
-  Rougelike, strzelanka
+  Rougelike, strzelanka.
   
-## 2.4 Przepływ gry
+## 2.3 Przepływ gry
+  Gra składa się z 10 pokojów. Gracz przechodzi kolejne pokoje o rosnącej trudności przeciwników, aby w otstanim pokoju zmierzyć się z bossem. Przejście pokoju polega na pokonaniu wszystkich przeciwników.
 
-## 2.5 Wygląd i odczucia gracza
+## 2.4 Wygląd i odczucia gracza
+  Dynamiczna rozgrywka o wysokim poziomie trudności.
 
 # 3. Rozgrywka i mechaniki
 ## 3.1 Rozgrywka
-### 3.1.1 Przechodzenie gry
-
-### 3.1.2 Struktura misji i wyzwań
-
-### 3.1.3 Struktura łamigłówek
-
-### 3.1.4 Cele gry
-  Celem gry jest pokonanie Beelzebossa i odzyskanie Gitary Przeznaczenia.
-
-### 3.1.5 Przepływ gry
+  Celem gry jest pokonanie Beelzebossa (ostatniego przeciwnika, dużo silniejszego od pozostałych) i odzyskanie Gitary Przeznaczenia.
 
 ## 3.2 Mechaniki
 ### 3.2.1 Ruch w grze
-  Ruch w dowolnym z czeterch kierunków: lewo, prawo, góra, dół. Ograniczony przez obiekty na planszy i ściany.
+  Ruch w dowolnym z czeterch kierunków: lewo, prawo, góra, dół. Ograniczony przez obiekty na planszy, ściany i przeciwników.
   
 ### 3.2.2 Przedmioty
   - Serduszko - Uzupełnia brakujące zdrowie gracza.
   - Bomba - Pozwala na wysadzanie terenu.
   - Nutka - Waluta.
-  - Kostka - Zwiększa statystyki gracza.
+  - Kostka - Zwiększa statystyki gracza. Różne kolory kostek wzmacniają różne statystki.
   - Gitara - Ostateczny przedmiot do zdobycia, zdobycie kończy grę.
 
-### 3.2.3 Akcje i ich kontrola
+### 3.2.3 Walka
+  Gracz strzela pociskami ze swojej gitary oraz ma możliwość postawienia bomby która zadaje obrażenia przeciwnikom i niszczy teren.
 
-### 3.2.4 Walka
-
-### 3.2.5 Ekonomia
-  Zbieranie nutek z przeciwników i wydawanie ich w sklepie.
+### 3.2.4 Ekonomia
+  Zbieranie nutek z przeciwników i wydawanie ich w sklepie na przedmioty.
 
 ## 3.3 Opcje Gry
   Zmiana głośności.
@@ -53,14 +51,11 @@
   Gra osadzona w świecie współczesnym. Głównym bohaterem jest profesjonalny gitarzysta zespołu metalowego David. Pewnego dnia po koncercie, do jego autokaru włamały się demony i sam Beelzeboss ukradł mu gitarę przeznaczenia, którą David musi teraz odzyskać.
 
 ## 4.2 Świat
-  Świat w podziemiach, mroczny. Mapy losowo generowane z przygotowanych wcześniej, wymagane jest pokonanie przeciwników żeby można było przejść do następnej planszy.
+  Świat w podziemiach, mroczny. Mapy losowo generowane z przygotowanych wcześniej fragmentów, wymagane jest pokonanie przeciwników żeby można było przejść do następnej planszy.
   Plansze małe, w większości zawierające przeciwników. Plansze specjalne (początkowa, z bossem).
   
 ## 4.3 Postacie
-  David - Głowny bohater, któremu diabeł ukradł gitarę. Posiada żelazną wolę i niezwykłe umiejętności gitarowe.
-
-## 5.2 Samouczek
-  Zgodnie z tradycją rougelike bez samuczka.
+  David - Głowny bohater, któremu diabeł ukradł gitarę. Zawodowo gra w światowej sławy zespole rockowym. Posiada żelazną wolę i niezwykłe umiejętności gitarowe.
 
 # 6. Interfejs
 ## 6.1 System interfejsu użytkownika
@@ -83,18 +78,15 @@ Każdy przeciwnik posiadający swoją własną strategię, np. przeciwnik strzel
 czy przeciwnik biegnący na gracza i robiący uniki. Przeciwnik z tarczą, który będzie stawał pomiędzy graczem, a przeciwnikiem strzelającym.
 
 ## 7.2 Neutralne i przyjazne SI
-  Neutralny sklepikarz na początku gry i po zginięciu oferujący wzmocnienia dla gracza za opłatą.
-
-## 7.3 SI Wspierające gracza
+  Neutralny sklepikarz pojawiający się w trakcie gry oferujący przedmioty dla gracza za opłatą.
 
 # 8. Sprzęt
 ## 8.1 Sprzęt docelowy
+  Komputer stacjonarny/laptop z Windows 10
 
 ## 8.2 Silnik gry, środowisko programistyczne
   - Silnik: Unity 2020  
   - Środowisko: Visual Studio 2019
-
-## 8.3 Wymagania sieciowe
 
 # 9. Grafika
   Grafika pikselowa z nastawieniem na ciemny motyw. Paleta głównych kolorów to czarny, czerwony, szary, zółty, brązowy.
