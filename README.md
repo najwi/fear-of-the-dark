@@ -54,7 +54,7 @@
   Świat w podziemiach, mroczny. Mapy losowo generowane z przygotowanych wcześniej fragmentów, wymagane jest pokonanie przeciwników żeby można było przejść do następnej planszy.
   Plansze małe, w większości zawierające przeciwników. Plansze specjalne (początkowa, z bossem).
   Mapa składa się z około 10 mniejszych pokoi (planszy). Każdy pokój będzie powstawał na bazie predefiniowanego szablonu, natomiast generacja mapy polegać będzie na łączeniu ze sobą pokoi. Przy generowaniu mapy, niezbędne będzie sprawdzanie, czy dany pokój może zostać dołożony do już wygenerowanej mapy oraz zapewnienie dalszej ścieżki do ostatniego pokoju.
-  ![Map1](https://github.com/najwi/fear-of-the-dark/blob/main/screenshots/map1.png)
+  ![Map1](https://github.com/najwi/fear-of-the-dark/blob/main/screenshots/map1.png) ![Map2](https://github.com/najwi/fear-of-the-dark/blob/main/screenshots/map2.png)
   
 ## 4.3 Postacie
   David - Głowny bohater, któremu diabeł ukradł gitarę. Zawodowo gra w światowej sławy zespole rockowym. Posiada żelazną wolę i niezwykłe umiejętności gitarowe.
