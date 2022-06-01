@@ -59,37 +59,37 @@
 ## 4.3 Postacie
   David - Głowny bohater, któremu diabeł ukradł gitarę. Zawodowo gra w światowej sławy zespole rockowym. Posiada żelazną wolę i niezwykłe umiejętności gitarowe.
 
-# 6. Interfejs
-## 6.1 System interfejsu użytkownika
+# 5. Interfejs
+## 5.1 System interfejsu użytkownika
   W czasie gry wyświetlanie aktualnego i maksymalnego stanu zdrowia gracza oraz wyświetlanie przedmiotów i statystyk gracza. <br />
   W czasie walki z bossem wyświetlanie punktów życia bossa.
 
-## 6.2 Kontroler
+## 5.2 Kontroler
   Ruchy i zachowania gracza sterowane za pomocą klawiatury. Interfejs sterowany za pomocą klawiatury lub myszki.
   
-## 6.3 Muzyka i dźwięk
+## 5.3 Muzyka i dźwięk
   Muzyka spokojna w tle podczas przechodzenia poziomów i muzyka metal/rock podczas walki z bossem.
 
-## 6.4 System pomocy
+## 5.4 System pomocy
   W dowolnym momencie możliwość sprawdzenia skrótów klawiszowych w menu.
 
-# 7. Sztuczna inteligencja
-## 7.1 SI przeciwników
+# 6. Sztuczna inteligencja
+## 6.1 SI przeciwników
   Przeciwnicy reagujący na zachowanie gracza poprzez np. unikanie pocisków, zastawianie przejścia do innego przeciwnika.
 Każdy przeciwnik posiadający swoją własną strategię, np. przeciwnik strzelający, który będzie trzymał sie z daleka od gracza
 czy przeciwnik biegnący na gracza i robiący uniki. Przeciwnik z tarczą, który będzie stawał pomiędzy graczem, a przeciwnikiem strzelającym.
 
-## 7.2 Neutralne i przyjazne SI
+## 6.2 Neutralne i przyjazne SI
   Neutralny sklepikarz pojawiający się w trakcie gry oferujący przedmioty dla gracza za opłatą.
 
-# 8. Sprzęt
-## 8.1 Sprzęt docelowy
+# 7. Sprzęt
+## 7.1 Sprzęt docelowy
   Komputer stacjonarny/laptop z Windows 10
 
-## 8.2 Silnik gry, środowisko programistyczne
+## 7.2 Silnik gry, środowisko programistyczne
   - Silnik: Unity 2020  
   - Środowisko: Visual Studio 2019
 
-# 9. Grafika
+# 8. Grafika
   Grafika pikselowa z nastawieniem na ciemny motyw. Paleta głównych kolorów to czarny, czerwony, szary, zółty, brązowy.
 Tło podziemii, lochu lub piekła. Przeciwnicy w podobnym motywie: nieumarli, demony.
