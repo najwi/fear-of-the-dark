@@ -76,8 +76,11 @@
 # 6. Sztuczna inteligencja
 ## 6.1 SI przeciwników
   Przeciwnicy reagujący na zachowanie gracza poprzez np. unikanie pocisków, zastawianie przejścia do innego przeciwnika.
-Każdy przeciwnik posiadający swoją własną strategię, np. przeciwnik strzelający, który będzie trzymał sie z daleka od gracza
-czy przeciwnik biegnący na gracza i robiący uniki. Przeciwnik z tarczą, który będzie stawał pomiędzy graczem, a przeciwnikiem strzelającym.
+Każdy przeciwnik posiadający swoją własną strategię, co najmniej 4 przeciwników.
+ - Przeciwnik strzelający, który będzie trzymał sie z daleka od gracza.
+ - Przeciwnik biegnący na gracza i robiący uniki.
+ - Przeciwnik z tarczą, który będzie stawał pomiędzy graczem, a przeciwnikiem strzelającym.
+ - Ostatni boss z unikatowym zachowaniem.
 
 ## 6.2 Neutralne i przyjazne SI
   Neutralny sklepikarz pojawiający się w trakcie gry oferujący przedmioty dla gracza za opłatą.
@@ -92,4 +95,6 @@ czy przeciwnik biegnący na gracza i robiący uniki. Przeciwnik z tarczą, któr
 
 # 8. Grafika
   Grafika pikselowa z nastawieniem na ciemny motyw. Paleta głównych kolorów to czarny, czerwony, szary, zółty, brązowy.
-Tło podziemii, lochu lub piekła. Przeciwnicy w podobnym motywie: nieumarli, demony.
+Tło podziemii, lochu lub piekła. Przeciwnicy w podobnym motywie: nieumarli, demony. <br />
+Przykładowa scena:
+![Scene1](./screenshots/scene1.png)
