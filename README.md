@@ -33,7 +33,7 @@
 ### 3.2.2 Przedmioty
   - Serduszko - Uzupełnia brakujące zdrowie gracza.
   - Bomba - Pozwala na wysadzanie terenu.
-  - Nutka - Waluta.
+  - Nutka - Waluta, pozwala kupić przedmioty u sklepikarza.
   - Kostka - Zwiększa statystyki gracza. Różne kolory kostek wzmacniają różne statystki.
   - Gitara - Ostateczny przedmiot do zdobycia, zdobycie kończy grę.
 
@@ -41,10 +41,13 @@
   Gracz strzela pociskami ze swojej gitary oraz ma możliwość postawienia bomby która zadaje obrażenia przeciwnikom i niszczy teren.
 
 ### 3.2.4 Ekonomia
-  Zbieranie nutek z przeciwników i wydawanie ich w sklepie na przedmioty.
+  Zbieranie nutek z przeciwników i wydawanie ich w sklepie na przedmioty (z punktu 3.2.2
+Przedmioty z wyjątkiem nutek).
+
 
 ## 3.3 Opcje Gry
-  Zmiana głośności.
+  - Zmiana głośności.
+  - Pauza.
   
 # 4. Fabuła i postacie
 ## 4.1 Historia
@@ -81,10 +84,17 @@ Każdy przeciwnik posiadający swoją własną strategię, co najmniej 4 przeciw
  - Przeciwnik strzelający, który będzie trzymał sie z daleka od gracza.
  - Przeciwnik biegnący na gracza i robiący uniki.
  - Przeciwnik z tarczą, który będzie stawał pomiędzy graczem, a przeciwnikiem strzelającym.
- - Ostatni boss z unikatowym zachowaniem.
+ - Ostatni boss z unikatowym zachowaniem, posiadający znacznie większą ilość zdrowia od
+zwykłych przeciwników. Atakuje poprzez rzucanie kulą ognia, gdy jego życie spadnie
+poniżej połowy zaczyna rzucać kilkoma kulami naraz Atakuje wręcz gdy gracz podejdzie za
+blisko.
 
 ## 6.2 Neutralne i przyjazne SI
-  Neutralny sklepikarz pojawiający się w trakcie gry oferujący przedmioty dla gracza za opłatą.
+  Neutralny sklepikarz pojawiający się w trakcie gry oferujący przedmioty dla gracza za
+opłatą. Do kupienia są 3 losowe przedmioty (Serduszko, Bomba, Kostka – różne rodzaje).
+Mogą się powtarzać. Przedmiot u jednego sklepikarza będzie można kupić tylko raz. Walutą
+są Nutki.
+
 
 # 7. Sprzęt
 ## 7.1 Sprzęt docelowy
