@@ -51,7 +51,7 @@
   Gra osadzona w świecie współczesnym. Głównym bohaterem jest profesjonalny gitarzysta zespołu metalowego David. Pewnego dnia po koncercie, do jego autokaru włamały się demony i sam Beelzeboss ukradł mu gitarę przeznaczenia, którą David musi teraz odzyskać.
 
 ## 4.2 Świat
-  Świat w podziemiach, mroczny. Mapy losowo generowane z przygotowanych wcześniej fragmentów, wymagane jest pokonanie przeciwników żeby można było przejść do następnej planszy.
+  Świat w podziemiach, mroczny. Mapa świata podzielona jest na plansze.
   Plansze małe, w większości zawierające przeciwników. Plansze specjalne (początkowa, z bossem).
   Mapa składa się z minimum jednego poziomu, natomiast ten - z przynajmniej 10 mniejszych pokoi (planszy). Każdy pokój będzie powstawał na bazie predefiniowanego szablonu, natomiast generacja mapy polegać będzie na łączeniu ze sobą pokoi. Przy generowaniu mapy, niezbędne będzie sprawdzanie, czy dany pokój może zostać dołożony do już wygenerowanej mapy oraz zapewnienie dalszej ścieżki do ostatniego pokoju.
   
