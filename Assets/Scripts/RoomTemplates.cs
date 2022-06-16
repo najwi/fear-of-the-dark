@@ -21,4 +21,6 @@ public class RoomTemplates : MonoBehaviour
     public Sprite[] wallSprites;
     public Sprite[] bossFloorSprites;
     public Sprite[] bossWallSprites;
+
+    public GameObject[] obstacleTemplates;
 }

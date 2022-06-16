@@ -21,7 +21,7 @@ public class RoomGenerator : MonoBehaviour
     private RoomTemplates templates;
 
     public static int minRoomQuantity = 10;
-    public static int maxRoomQuantity = 11;
+    public static int maxRoomQuantity = 40;
     private static int roomsSpawned = 0;
 
     public GameObject topSpawnPoint;
@@ -160,6 +160,8 @@ public class RoomGenerator : MonoBehaviour
             int random = Random.Range(0, templates.floorSprites.Length);
             floorChildSpriteRenderer.sprite = templates.floorSprites[random];
         }
+        int r = Random.Range(0, templates.obstacleTemplates.Length);
+        Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
