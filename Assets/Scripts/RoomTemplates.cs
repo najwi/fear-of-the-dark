@@ -15,4 +15,10 @@ public class RoomTemplates : MonoBehaviour
     public GameObject rightClosedRoom;
 
     public GameObject closedRoom;
+    public GameObject openedRoom;
+
+    public Sprite[] floorSprites;
+    public Sprite[] wallSprites;
+    public Sprite[] bossFloorSprites;
+    public Sprite[] bossWallSprites;
 }
