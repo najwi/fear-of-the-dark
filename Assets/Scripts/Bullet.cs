@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
+    public float dmg = 1f;
     
     void Start()
     {
@@ -17,6 +18,4 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
 }
