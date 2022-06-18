@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2078856817389342298}
   - component: {fileID: 2078856817389342293}
   - component: {fileID: 2078856817389342292}
+  - component: {fileID: -6502930870655733724}
   m_Layer: 10
   m_Name: hell_hound
   m_TagString: Untagged
@@ -169,6 +170,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNotAttacking: 1
   moveSpeed: 2
-  attackRange: 1.5
-  attackEscapeRange: 2.5
+  dodgeSpeed: 10
+  dodgeTime: 0.1
+  health: 3
+  attackDamage: 1
+  attackRange: 1.8
+  attackEscapeRange: 2.8
   attackDelay: 1.5
+  dodgeDelay: 3
+--- !u!58 &-6502930870655733724
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078856817389342288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
