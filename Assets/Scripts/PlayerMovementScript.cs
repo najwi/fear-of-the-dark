@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementScript : MonoBehaviour
 {
-    public float moveSpeed = 5;
-
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     public Transform firepoint;
@@ -14,10 +13,19 @@ public class PlayerMovementScript : MonoBehaviour
     public float bulletCooldown = 0.4f;
     private float currentBulletCooldown = 0f;
     public Animator animator;
+    public int maxHp = 4;
+    public int maxHpUp = 1;
+    private int currentHp;
+    public int damage = 1;
+    public int damageUp = 1;
+    public float moveSpeed = 5f;
+    public float speedUp = 2f;
+    public bool noDmg = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
+        currentHp = maxHp;
     }
 
     private void Update()
@@ -97,26 +105,64 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void FireDown(){
         Quaternion rotation = Quaternion.LookRotation(firepoint.forward, firepoint.right);
-        Instantiate(bulletPrefab, firepoint.position, rotation);
+        var go = Instantiate(bulletPrefab, firepoint.position, rotation);
+        go.GetComponent<Bullet>().dmg = damage;
     }
 
     private void FireUp(){
         Quaternion rotation = Quaternion.LookRotation(firepoint.forward, firepoint.right*-1);
-        Instantiate(bulletPrefab, firepoint.position, rotation);
+        var go = Instantiate(bulletPrefab, firepoint.position, rotation);
+        go.GetComponent<Bullet>().dmg = damage;
     }
 
     private void FireLeft(){
         Quaternion rotation = Quaternion.LookRotation(firepoint.forward, firepoint.up*-1);
-        Instantiate(bulletPrefab, firepoint.position, rotation);
+        var go = Instantiate(bulletPrefab, firepoint.position, rotation);
+        go.GetComponent<Bullet>().dmg = damage;
     }
 
     private void FireRight(){
         Quaternion rotation = Quaternion.LookRotation(firepoint.forward, firepoint.up);
-        Instantiate(bulletPrefab, firepoint.position, rotation);
+        var go = Instantiate(bulletPrefab, firepoint.position, rotation);
+        go.GetComponent<Bullet>().dmg = damage;
     }
 
     private void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+    }
+
+    public void TakeDamage(int dmg){
+        //Cheat code
+        if(noDmg)
+            return;
+
+        currentHp -= dmg;
+        if(currentHp <= 0){
+            animator.SetTrigger("Die");
+        }
+    }
+
+    public void Die(){
+        SceneManager.LoadScene("DeathScene");
+    }
+
+    public void DamageUp(){
+        damage += damageUp;
+    }
+
+    public void SpeedUp(){
+        moveSpeed += speedUp;
+    }
+
+    public void HealthUp(){
+        maxHp += maxHpUp;
+        currentHp += maxHpUp;
+    }
+
+    public void Heal(){
+        if(currentHp < maxHp){
+            currentHp += 1;
+        }
     }
 }

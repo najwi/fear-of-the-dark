@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1400543268954661876}
   - component: {fileID: 1400543268954661877}
   - component: {fileID: 1400543268954661864}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1400543269260411712}
   - component: {fileID: 1400543269260411719}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
