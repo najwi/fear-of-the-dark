@@ -7,6 +7,8 @@ public class EnemyHoundScript : MonoBehaviour
 {
     public bool isNotAttacking = true;
     public float moveSpeed = 2f;
+    public int health = 3;
+    public int attackStrength = 1;
     public float attackRange = 1.5f;
     public float attackEscapeRange = 2.5f;
     public float attackDelay = 1.5f;
@@ -98,11 +100,22 @@ public class EnemyHoundScript : MonoBehaviour
         return distance < attackEscapeRange;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("AllyProjectile"))
+        {
+            Dodge(collision.gameObject);
+        }
+    }
+
+    private void Dodge(GameObject projectile)
+    {
+
+    }
 
     private void FinalizeAttack()
     {
         Debug.Log("End of attack");
-        isNotAttacking = true;
 
         Vector2 direction = player.transform.position - transform.position;
         if (EscapedAttackRange(direction))
@@ -113,5 +126,6 @@ public class EnemyHoundScript : MonoBehaviour
         {
             Debug.Log("Missed");
         }
+        isNotAttacking = true;
     }
 }
