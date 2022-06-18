@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementScript : MonoBehaviour
@@ -21,16 +22,29 @@ public class PlayerMovementScript : MonoBehaviour
     public float moveSpeed = 5f;
     public float speedUp = 2f;
     public bool noDmg = false;
+    public int notes = 3;
+    public int bombs = 1;
+    public SpriteRenderer sprite;
+    private bool alive = true;
+    private int guiHeartsCount;
+    public GameObject fullHearts;
+    public GameObject emptyHearts;
+    public TextMeshProUGUI notesText;
+    public TextMeshProUGUI bombsText;
+    public TextMeshProUGUI speedText;
+    public TextMeshProUGUI damageText;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
         currentHp = maxHp;
+        UpdateHud();
     }
 
     private void Update()
     {
-        GetInputs();
+        if(alive)
+            GetInputs();
 
         if(currentBulletCooldown > 0){
             currentBulletCooldown -= Time.deltaTime;
@@ -40,6 +54,21 @@ public class PlayerMovementScript : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void UpdateHud(){
+        UpdateHearts();
+        damageText.text = damage.ToString();
+        speedText.text = moveSpeed.ToString();
+        bombsText.text = bombs.ToString();
+        notesText.text = notes.ToString();
+    }
+    
+    private void UpdateHearts(){
+        for(int i = 0; i < fullHearts.transform.childCount; i++){
+            fullHearts.transform.GetChild(i).gameObject.SetActive(i<currentHp);
+            emptyHearts.transform.GetChild(i).gameObject.SetActive(i>=currentHp && i<maxHp);
+        }
     }
 
     private void GetInputs()
@@ -139,8 +168,13 @@ public class PlayerMovementScript : MonoBehaviour
 
         currentHp -= dmg;
         if(currentHp <= 0){
+            alive = false;
             animator.SetTrigger("Die");
+        }else{
+            //Flash player sprite on damage
+            StartCoroutine(StrobeColorHelper(0, 7, sprite, Color.white, new Color(1,1,1, 0.1f)));
         }
+        UpdateHearts();
     }
 
     public void Die(){
@@ -149,20 +183,50 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void DamageUp(){
         damage += damageUp;
+        damageText.text = damage.ToString();
     }
 
     public void SpeedUp(){
         moveSpeed += speedUp;
+        speedText.text = moveSpeed.ToString();
     }
 
     public void HealthUp(){
-        maxHp += maxHpUp;
-        currentHp += maxHpUp;
+        if(maxHp < 10)
+            maxHp += maxHpUp;
+        if(maxHp - currentHp > 0)
+            currentHp += 1;
+        UpdateHearts();
     }
 
     public void Heal(){
         if(currentHp < maxHp){
             currentHp += 1;
+            UpdateHearts();
+        }
+    }
+
+    public void BombPickup(){
+        bombs += 1;
+        bombsText.text = bombs.ToString();
+    }
+
+    public void NotePickup(){
+        notes += 1;
+        notesText.text = notes.ToString();
+    }
+
+    private IEnumerator StrobeColorHelper( int _i, int _stopAt, SpriteRenderer _mySprite, Color _color, Color _toStrobe)
+    {
+        if(_i <= _stopAt)
+        {
+            if (_i % 2 == 0)
+                _mySprite.color = _toStrobe;
+            else
+                _mySprite.color = _color;
+ 
+            yield return new WaitForSeconds(.1f);
+            StartCoroutine(StrobeColorHelper( (_i+1), _stopAt, _mySprite, _color, _toStrobe));
         }
     }
 }
