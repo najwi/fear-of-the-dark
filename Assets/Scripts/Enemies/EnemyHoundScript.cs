@@ -108,6 +108,7 @@ public class EnemyHoundScript : MonoBehaviour
         if (EscapedAttackRange(direction))
         {
             Debug.Log("Hit");
+            player.GetComponent<PlayerMovementScript>().TakeDamage(1);
         }
         else
         {
