@@ -177,7 +177,7 @@ MonoBehaviour:
   attackRange: 1.8
   attackEscapeRange: 2.8
   attackDelay: 1.5
-  dodgeDelay: 3
+  dodgeDelay: 2.2
 --- !u!58 &-6502930870655733724
 CircleCollider2D:
   m_ObjectHideFlags: 0
