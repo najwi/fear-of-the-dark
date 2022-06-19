@@ -599,7 +599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: -110}
+  m_AnchoredPosition: {x: 2, y: -110}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1106232466
@@ -908,6 +908,7 @@ GameObject:
   - component: {fileID: 2046328050}
   - component: {fileID: 2046328049}
   - component: {fileID: 2046328048}
+  - component: {fileID: 2046328051}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1001,6 +1002,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2046328051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046328046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4421709fd7e8106489ad9cdabba4c550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedOptionColor: {r: 1, g: 0.8352941, b: 0, a: 1}
+  defaultOptionColor: {r: 1, g: 1, b: 1, a: 1}
+  volumeChange: 0.1
+  slider: {fileID: 371459483}
+  texts:
+  - {fileID: 1744312139}
+  - {fileID: 1106232466}
 --- !u!1 &2082398622
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Settings : MonoBehaviour
+public class SettingsScript : MonoBehaviour
 {
     public Color selectedOptionColor;
     public Color defaultOptionColor;
@@ -13,7 +13,6 @@ public class Settings : MonoBehaviour
     //1 - back
     public float volumeChange = 0.1f;
     public Slider slider;
-
     public List<Image> texts;
 
     void Start()
@@ -23,6 +22,7 @@ public class Settings : MonoBehaviour
         Cursor.visible = false;
 
         UpdateMenu();
+        SetSlider();
     }
 
     void Update()
@@ -52,6 +52,10 @@ public class Settings : MonoBehaviour
                 case 1: SceneManager.LoadScene("MenuScene"); break;
             }
         }
+        
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            SceneManager.LoadScene("MenuScene");
+        }
 
         if(Input.GetKeyDown("left")){
             if(option == 0){
@@ -60,7 +64,9 @@ public class Settings : MonoBehaviour
         }
 
         if(Input.GetKeyDown("right")){
-            ChangeVolume(volumeChange);
+            if(option == 0){
+                ChangeVolume(volumeChange);
+            }
         }
     }
 
@@ -75,13 +81,19 @@ public class Settings : MonoBehaviour
             newVol = 1;
 
         PlayerPrefs.SetFloat("volume", newVol);
+        SetSlider(newVol);
     }
 
-    void SetSlider(float value){
-        
+    void SetSlider(){
+        slider.value = PlayerPrefs.GetFloat("volume", 0.5f);
+    }
+
+    void SetSlider(float val){
+        slider.value = val;
     }
 
     void UpdateMenu(){
-
+        for(int i = 0; i<texts.Count; i++)
+            texts[i].color = i==option ? selectedOptionColor : defaultOptionColor;
     }
 }

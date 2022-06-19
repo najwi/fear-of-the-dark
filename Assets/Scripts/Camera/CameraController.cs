@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public float cameraSpeed;
     private float currentPosX;
-    private float currentPosY;
+    private float currentPosY = 0.7f;
     private Vector3 velocity = Vector3.zero;
 
     // Start is called before the first frame update
@@ -24,6 +24,6 @@ public class CameraController : MonoBehaviour
 
     public void Move(Transform destination){
         currentPosX = destination.position.x;
-        currentPosY = destination.position.y;
+        currentPosY = destination.position.y + 0.7f;
     }
 }
