@@ -55,7 +55,8 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if(alive)
+            Move();
     }
 
     private void UpdateHud(){
@@ -198,13 +199,15 @@ public class PlayerMovementScript : MonoBehaviour
         if(notes >= itemPrice){
             notes -= itemPrice;
             DamageUp();
+            notesText.text = notes.ToString();
         }
     }
 
     public void TryBuyHealthUp(){
-        if(notes >= itemPrice){
+        if(notes >= itemPrice && maxHp < fullHearts.transform.childCount){
             notes -= itemPrice;
             HealthUp();
+            notesText.text = notes.ToString();
         }
     }
 
@@ -212,6 +215,7 @@ public class PlayerMovementScript : MonoBehaviour
         if(notes >= itemPrice){
             notes -= itemPrice;
             SpeedUp();
+            notesText.text = notes.ToString();
         }
     }
 

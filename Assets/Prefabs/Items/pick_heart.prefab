@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1718941656614614267}
   m_Layer: 12
   m_Name: pick_heart
-  m_TagString: DamageUpPickup
+  m_TagString: HealthUpPickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
