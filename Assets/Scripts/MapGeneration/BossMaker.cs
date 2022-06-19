@@ -13,12 +13,6 @@ public class BossMaker : MonoBehaviour
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void MakeBossRoom(){
         Transform walls = gameObject.transform.GetChild(0);
         walls.gameObject.SetActive(true);
