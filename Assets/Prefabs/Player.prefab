@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1400543268954661876}
   - component: {fileID: 1400543268954661877}
   - component: {fileID: 1400543268954661864}
+  - component: {fileID: 4189651278737580530}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -168,6 +169,7 @@ MonoBehaviour:
   bombsText: {fileID: 0}
   speedText: {fileID: 0}
   damageText: {fileID: 0}
+  bombPrefab: {fileID: 4968037521211024683, guid: f926524fe768fa3438f12b0d9a4b3b2e, type: 3}
 --- !u!95 &1400543268954661864
 Animator:
   serializedVersion: 4
@@ -188,6 +190,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4189651278737580530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400543268954661878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe98160a3633996459a2935166883a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1400543269260411713
 GameObject:
   m_ObjectHideFlags: 0

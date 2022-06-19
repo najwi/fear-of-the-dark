@@ -33,6 +33,8 @@ public class PlayerMovementScript : MonoBehaviour
     public TextMeshProUGUI bombsText;
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI damageText;
+    public GameObject bombPrefab;
+    public int itemPrice = 10;
 
     void Start()
     {
@@ -130,6 +132,17 @@ public class PlayerMovementScript : MonoBehaviour
                 currentBulletCooldown = bulletCooldown;
             }
         }
+
+        if(Input.GetKeyDown("e")){
+            PlaceBomb();
+        }
+    }
+
+    private void PlaceBomb(){
+        if(bombs > 0){
+            bombs--;
+            Instantiate(bombPrefab, firepoint.position, firepoint.rotation);
+        }
     }
 
     private void FireDown(){
@@ -181,6 +194,27 @@ public class PlayerMovementScript : MonoBehaviour
         SceneManager.LoadScene("DeathScene");
     }
 
+    public void TryBuyDamageUp(){
+        if(notes >= itemPrice){
+            notes -= itemPrice;
+            DamageUp();
+        }
+    }
+
+    public void TryBuyHealthUp(){
+        if(notes >= itemPrice){
+            notes -= itemPrice;
+            HealthUp();
+        }
+    }
+
+    public void TryBuySpeedUp(){
+        if(notes >= itemPrice){
+            notes -= itemPrice;
+            SpeedUp();
+        }
+    }
+
     public void DamageUp(){
         damage += damageUp;
         damageText.text = damage.ToString();
@@ -199,11 +233,13 @@ public class PlayerMovementScript : MonoBehaviour
         UpdateHearts();
     }
 
-    public void Heal(){
+    public bool TryHeal(){
         if(currentHp < maxHp){
             currentHp += 1;
             UpdateHearts();
+            return true;
         }
+        return false;
     }
 
     public void BombPickup(){
