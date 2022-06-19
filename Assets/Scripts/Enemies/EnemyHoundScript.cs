@@ -17,7 +17,7 @@ public class EnemyHoundScript : MonoBehaviour
     public float attackRange = 1.8f;
     public float attackEscapeRange = 2.8f;
     public float attackDelay = 1.5f;
-    public float dodgeDelay = 3f;
+    public float dodgeDelay = 2.2f;
 
     private GameObject player;
     private PlayerMovementScript playerScript;
