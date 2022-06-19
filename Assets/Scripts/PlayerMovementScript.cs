@@ -35,12 +35,15 @@ public class PlayerMovementScript : MonoBehaviour
     public TextMeshProUGUI damageText;
     public GameObject bombPrefab;
     public int itemPrice = 10;
+    public AudioSource itemPickupSound;
+    public AudioSource shootSound;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
         currentHp = maxHp;
         UpdateHud();
+        AudioListener.volume = PlayerPrefs.GetFloat("volume", 0.5f);
     }
 
     private void Update()
@@ -115,21 +118,25 @@ public class PlayerMovementScript : MonoBehaviour
         if(currentBulletCooldown <= 0){        
             if(Input.GetKey("right")){
                 FireRight();
+                shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
             }
 
             if(Input.GetKey("left")){
                 FireLeft();
+                shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
             }
 
             if(Input.GetKey("down")){
                 FireDown();
+                shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
             }
 
             if(Input.GetKey("up")){
                 FireUp();
+                shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
             }
         }
@@ -137,11 +144,16 @@ public class PlayerMovementScript : MonoBehaviour
         if(Input.GetKeyDown("e")){
             PlaceBomb();
         }
+
+        if(Input.GetKeyDown("c")){
+            noDmg = !noDmg;
+        }
     }
 
     private void PlaceBomb(){
         if(bombs > 0){
             bombs--;
+            bombsText.text = bombs.ToString();
             Instantiate(bombPrefab, firepoint.position, firepoint.rotation);
         }
     }
@@ -197,6 +209,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void TryBuyDamageUp(){
         if(notes >= itemPrice){
+            itemPickupSound.Play();
             notes -= itemPrice;
             DamageUp();
             notesText.text = notes.ToString();
@@ -205,6 +218,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void TryBuyHealthUp(){
         if(notes >= itemPrice && maxHp < fullHearts.transform.childCount){
+            itemPickupSound.Play();
             notes -= itemPrice;
             HealthUp();
             notesText.text = notes.ToString();
@@ -213,6 +227,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void TryBuySpeedUp(){
         if(notes >= itemPrice){
+            itemPickupSound.Play();
             notes -= itemPrice;
             SpeedUp();
             notesText.text = notes.ToString();
