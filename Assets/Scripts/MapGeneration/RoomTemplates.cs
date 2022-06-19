@@ -24,6 +24,9 @@ public class RoomTemplates : MonoBehaviour
 
     public GameObject[] obstacleTemplates;
 
+    public GameObject[] easyObstacleTemplates;
+    public GameObject[] hardObstacleTemplates;
+
     public Sprite closedDoor;
     public Sprite openedDoor;
 

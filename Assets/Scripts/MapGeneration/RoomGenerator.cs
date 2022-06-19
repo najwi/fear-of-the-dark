@@ -17,6 +17,8 @@ public class RoomGenerator : MonoBehaviour
     public bool rightDoor;
     public bool leftDoor;
     public bool bottomDoor;
+
+    public static bool finished = false;
     
     public GameObject[] spawnPoints;
     private RoomTemplates templates;
@@ -30,6 +32,7 @@ public class RoomGenerator : MonoBehaviour
     public GameObject rightSpawnPoint;
     public GameObject bottomSpawnPoint;
     public GameObject leftSpawnPoint;
+    private RoomDesigner roomDesigner;
 
     private int rand;
 
@@ -39,6 +42,7 @@ public class RoomGenerator : MonoBehaviour
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        roomDesigner = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RoomDesigner>();
 
         switch (roomType){
             case 1:
@@ -94,8 +98,13 @@ public class RoomGenerator : MonoBehaviour
         }
         else{
             Invoke("SpawnClosedRoom", 0.1f);
+            finished = true;
         }
     }
+
+    // void FindBossRoom(){
+    //     roomDesigner.Begin();
+    // }
 
     void SpawnRoom(){
         for (int i=0; i < 4; i++){
@@ -233,9 +242,9 @@ public class RoomGenerator : MonoBehaviour
                 wallChildSpriteRenderer.sprite = templates.shopWallSprites[random];
             }
         }
-        int r = Random.Range(0, templates.obstacleTemplates.Length);
+        int r = Random.Range(0, templates.easyObstacleTemplates.Length);
         if (gameObject.name != "Opened" && gameObject.name != "Shop"){
-            Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+            Instantiate(templates.easyObstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
         }
     }
 }

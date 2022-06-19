@@ -37,20 +37,20 @@ public class RoomSpawner : MonoBehaviour
             int roomType = parRoom.GetComponent<RoomGenerator>().roomType;
             switch (roomType){
                 case 1:
-                    Instantiate(templates.topClosedRoom, parRoom.transform.position, Quaternion.identity);
-                    Destroy(parRoom);
+                    parRoom = Instantiate(templates.topClosedRoom, parRoom.transform.position, Quaternion.identity);
+                    // Destroy(parRoom);
                     break;
                 case 2:
-                    Instantiate(templates.rightClosedRoom, parRoom.transform.position, Quaternion.identity);
-                    Destroy(parRoom);
+                    parRoom = Instantiate(templates.rightClosedRoom, parRoom.transform.position, Quaternion.identity);
+                    // Destroy(parRoom);
                     break;
                 case 3:
-                    Instantiate(templates.bottomClosedRoom, parRoom.transform.position, Quaternion.identity);
-                    Destroy(parRoom);
+                    parRoom = Instantiate(templates.bottomClosedRoom, parRoom.transform.position, Quaternion.identity);
+                    // Destroy(parRoom);
                     break;
                 case 4:
-                    Instantiate(templates.leftClosedRoom, parRoom.transform.position, Quaternion.identity);
-                    Destroy(parRoom);
+                    parRoom = Instantiate(templates.leftClosedRoom, parRoom.transform.position, Quaternion.identity);
+                    // Destroy(parRoom);
                     break;
                 case 0:
                     Debug.Log("From opened");

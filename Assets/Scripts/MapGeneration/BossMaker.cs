@@ -40,4 +40,45 @@ public class BossMaker : MonoBehaviour
             floorChildSpriteRenderer.sprite = templates.bossFloorSprites[random];
         }
     }
+
+    public void SetDifficulty(int diff){
+        Transform walls = null;
+        Transform floor = null;
+        Transform obstacleTemplate = null;
+        foreach (Transform roomElem in gameObject.transform){
+            if (roomElem.gameObject.name == "Walls"){
+                walls = roomElem;
+            }else if(roomElem.gameObject.name == "Floor"){
+                floor = roomElem;
+            }
+            if (roomElem.gameObject.CompareTag("ObstacleTemplate")){
+                Destroy(roomElem.gameObject);
+            }
+            
+        }
+
+        if (diff == 0){
+            int r = Random.Range(0, templates.easyObstacleTemplates.Length);
+            if (gameObject.name != "Opened" && gameObject.name != "Shop"){
+                Instantiate(templates.easyObstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+            }
+        }else{
+            int r = Random.Range(0, templates.hardObstacleTemplates.Length);
+            if (gameObject.name != "Opened" && gameObject.name != "Shop"){
+                Instantiate(templates.hardObstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+            }
+        }
+
+        //-------------------------------------------
+        // foreach (Transform wallChild in walls.gameObject.transform){
+        //     SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
+        //     int random = Random.Range(0, templates.bossWallSprites.Length);
+        //     wallChildSpriteRenderer.sprite = templates.bossWallSprites[random];
+        // }
+        // foreach (Transform floorChild in floor.gameObject.transform){
+        //     SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
+        //     int random = Random.Range(0, templates.bossFloorSprites.Length);
+        //     floorChildSpriteRenderer.sprite = templates.bossFloorSprites[random];
+        // }
+    }
 }

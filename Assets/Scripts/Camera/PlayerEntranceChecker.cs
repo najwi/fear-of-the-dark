@@ -16,12 +16,9 @@ public class PlayerEntranceChecker : MonoBehaviour
         if(other.CompareTag("Player")){
             cam.Move(destinationView);
         }
-        if(other.CompareTag("AllyProjectile")){
+        if(other.CompareTag("EnemyProjectile")){
             Destroy(other.gameObject);
         }
-        // if(other.CompareTag("EnemyProjectile")){
-        //     Destroy(other.gameObject);
-        // }
         GameObject par = gameObject.transform.parent.gameObject;
         
         if (par.name != "Shop"){
@@ -38,7 +35,6 @@ public class PlayerEntranceChecker : MonoBehaviour
                         foreach(Transform enemy in obstacleChild){
                             enemy.gameObject.SetActive(true);
                         }
-                        // obstacleChild.gameObject.SetActive(true);
                     }
                 }
                 
