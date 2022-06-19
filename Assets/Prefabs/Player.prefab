@@ -102,7 +102,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.061339915, y: -0.17243452}
+  m_Offset: {x: -0.103455365, y: -0.18308982}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -113,7 +113,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7137482, y: 0.7103101}
+  m_Size: {x: 0.6295173, y: 0.6889995}
   m_EdgeRadius: 0
 --- !u!50 &1400543268954661876
 Rigidbody2D:
@@ -154,11 +154,16 @@ MonoBehaviour:
   animator: {fileID: 1400543268954661864}
   maxHp: 4
   maxHpUp: 1
-  damage: 5
+  damage: 1
   damageUp: 1
   moveSpeed: 5
   speedUp: 2
   noDmg: 0
+  notes: 3
+  bombs: 1
+  sprite: {fileID: 1400543268954661866}
+  fullHearts: {fileID: 1704535984374939473, guid: 5bce8fa96eb0d7f46a058e3deae87933, type: 3}
+  emptyHearts: {fileID: 6287847047055270844, guid: 1c0a7a97c7a2ee24badf050b4402a593, type: 3}
 --- !u!95 &1400543268954661864
 Animator:
   serializedVersion: 4
@@ -204,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400543269260411713}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13554296, y: 0.01, z: 0}
+  m_LocalPosition: {x: -0.13554296, y: -0.065, z: 0}
   m_LocalScale: {x: 0.7745312, y: 0.78383344, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1,6 +1,10 @@
 fileFormatVersion: 2
-guid: ee4933fcbb86ce64f9ac0919add9db3d
+<<<<<<< HEAD:Assets/Animations/Enemies/Hell-hound.meta
+guid: 9ac37f0979fd54e4b97c652e03614d00
 folderAsset: yes
+=======
+guid: 4be7577faee276f40b42eff34cf72a85
+>>>>>>> b63e45f (add hud):Assets/Sprites/Hud/hud-background.xcf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

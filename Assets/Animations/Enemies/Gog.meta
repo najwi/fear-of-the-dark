@@ -1,6 +1,10 @@
 fileFormatVersion: 2
-guid: 23c529bdfc1de9c4c95720031739a7e3
+<<<<<<< HEAD:Assets/Animations/Enemies/Gog.meta
+guid: 4b18eae2c97ed804db6bb62e551c5faf
 folderAsset: yes
+=======
+guid: fe1a8b090201fb249b69c68276600594
+>>>>>>> b63e45f (add hud):Assets/Sprites/Hud/heart.xcf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

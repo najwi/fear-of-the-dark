@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 23d26831ea00ba24291bfc212eabc4b4
+<<<<<<< HEAD:Assets/Animations/Bomb.meta
+guid: d91fda0f2d571ab4f872a978068d553f
+=======
+guid: 2f928574c04515245a39ae554dd3b4f2
+>>>>>>> b63e45f (add hud):Assets/Sprites/Hud.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

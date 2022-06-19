@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: ac2608b88f7e872468be9f463b81fa32
+<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity.meta
+guid: 06c52c7ec42e7ef4ea2800198e1046f0
+=======
+guid: 426fce7b9b2cf674f9759ff9e833437d
+>>>>>>> b63e45f (add hud):Assets/Sprites/Hud/empty-heart.xcf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

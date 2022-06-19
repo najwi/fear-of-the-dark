@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: f3a8e669772ae644bbc72632a2336ac0
+<<<<<<< HEAD:Assets/Animations/Enemies.meta
+guid: 570e3c3ae47d52042969961bc7a44e35
+=======
+guid: 2204c016bf56fcb4c9ff6029de12e5f5
+>>>>>>> b63e45f (add hud):Assets/Sprites/Interface.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
