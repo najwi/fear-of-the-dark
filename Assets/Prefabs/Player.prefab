@@ -127,7 +127,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -148,11 +148,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0c889547b925745943d7289ea12f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   firepoint: {fileID: 1400543269260411712}
   bulletPrefab: {fileID: 1841263442476223889, guid: 2a1b5bd317d76814d8bf229b3cc3dd22, type: 3}
   bulletCooldown: 0.5
   animator: {fileID: 1400543268954661864}
+  maxHp: 4
+  maxHpUp: 1
+  damage: 5
+  damageUp: 1
+  moveSpeed: 5
+  speedUp: 2
+  noDmg: 0
 --- !u!95 &1400543268954661864
 Animator:
   serializedVersion: 4

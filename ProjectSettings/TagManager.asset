@@ -9,6 +9,7 @@ TagManager:
   - Rooms
   - Room
   - Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX
