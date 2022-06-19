@@ -226,7 +226,9 @@ public class RoomGenerator : MonoBehaviour
                 floorChildSpriteRenderer.sprite = templates.floorSprites[random];
             }
             int r = Random.Range(0, templates.obstacleTemplates.Length);
-            Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity);
+            if (gameObject.name != "Opened"){
+                Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+            }
         }
     }
 }
