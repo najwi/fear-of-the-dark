@@ -10,7 +10,7 @@ public class RoomDesigner : MonoBehaviour
 
     void Start()
     {
-        Invoke("Begin", 8.5f);
+        Invoke("Begin", 10.5f);
     }
 
     void Begin(){

@@ -14,9 +14,21 @@ public class BossMaker : MonoBehaviour
     }
 
     public void MakeBossRoom(){
-        Transform walls = gameObject.transform.GetChild(0);
-        walls.gameObject.SetActive(true);
-        Transform floor = gameObject.transform.GetChild(1);
+        Transform walls = null;
+        Transform floor = null;
+        foreach (Transform roomElem in gameObject.transform){
+            if (roomElem.gameObject.name == "Walls"){
+                walls = roomElem;
+            }else if(roomElem.gameObject.name == "Floor"){
+                floor = roomElem;
+            }
+            if (roomElem.gameObject.CompareTag("ObstacleTemplate")){
+                Destroy(roomElem.gameObject);
+            }
+        }
+        // walls = gameObject.transform.GetChild(0);
+        // walls.gameObject.SetActive(true);
+        // floor = gameObject.transform.GetChild(1);
         foreach (Transform wallChild in walls.gameObject.transform){
             SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
             int random = Random.Range(0, templates.bossWallSprites.Length);

@@ -90,7 +90,7 @@ public class RoomGenerator : MonoBehaviour
         CustomizeRoom();
 
         if (roomsSpawned < maxRoomQuantity){
-            Invoke("SpawnRoom", 0.2f);
+            Invoke("SpawnRoom", 0.3f);
         }
         else{
             Invoke("SpawnClosedRoom", 0.1f);
