@@ -12,12 +12,14 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.right * speed;
+        DeleteAfterLifetime(Lifetime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
     }
+
     private IEnumerator DeleteAfterLifetime(float lifetime)
     {
         yield return new WaitForSeconds(lifetime);

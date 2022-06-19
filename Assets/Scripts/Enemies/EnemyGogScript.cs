@@ -28,6 +28,7 @@ public class EnemyGogScript : MonoBehaviour
     private Vector2 movement;
     private float lastMoveTime = -5f;
     private float lastAttackTime = -2.5f;
+    private bool isDead = false;
 
     int fireballsSpawned = 3;
     int currentFireballsSpawned = 0;
@@ -213,8 +214,11 @@ public class EnemyGogScript : MonoBehaviour
     {
         health -= damage;
         isNotAttacking = true;
-        if (health <= 0)
+        if (health <= 0 && !isDead)
+        { 
             anim.SetTrigger("die");
+            isDead = true;
+        }
         else
             anim.SetTrigger("hit");
     }
