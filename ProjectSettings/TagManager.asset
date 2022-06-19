@@ -17,9 +17,9 @@ TagManager:
   - Explosion
   - BombPickup
   - NotePickup
-  - HeartPickup
   - DamageUpPickup
   - SpeedUpPickup
+  - HealthUpPickup
   - HealthPickup
   layers:
   - Default

@@ -16,14 +16,14 @@ public class PlayerPickups : MonoBehaviour
         }else if(col.gameObject.CompareTag("BombPickup")){
             script.BombPickup();
             Destroy(col.gameObject);
-        }else if(col.gameObject.CompareTag("HeartPickup")){
+        }else if(col.gameObject.CompareTag("HealthPickup")){
             if(script.TryHeal())
                 Destroy(col.gameObject);
         }else if(col.gameObject.CompareTag("DamageUpPickup")){
             script.TryBuyDamageUp();
         }else if(col.gameObject.CompareTag("SpeedUpPickup")){
             script.TryBuySpeedUp();
-        }else if(col.gameObject.CompareTag("HealthPickup")){
+        }else if(col.gameObject.CompareTag("HealthUpPickup")){
             script.TryBuyHealthUp();
         }
     }
