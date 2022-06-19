@@ -19,6 +19,9 @@ public class PlayerEntranceChecker : MonoBehaviour
         if(other.CompareTag("AllyProjectile")){
             Destroy(other.gameObject);
         }
+        // if(other.CompareTag("EnemyProjectile")){
+        //     Destroy(other.gameObject);
+        // }
         GameObject par = gameObject.transform.parent.gameObject;
         
         if (par.name != "Shop"){
