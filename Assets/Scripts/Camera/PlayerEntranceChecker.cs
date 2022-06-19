@@ -19,5 +19,16 @@ public class PlayerEntranceChecker : MonoBehaviour
         if(other.CompareTag("AllyProjectile")){
             Destroy(other.gameObject);
         }
+        GameObject par = gameObject.transform.parent.gameObject;
+        foreach (Transform roomChild in par.transform){
+            if (roomChild.gameObject.CompareTag("ObstacleTemplate")){
+                foreach (Transform obstacleChild in roomChild){
+                    if (obstacleChild.gameObject.CompareTag("Enemy")){
+                        obstacleChild.gameObject.SetActive(true);
+                    }
+                }
+                
+            }
+        }
     }
 }

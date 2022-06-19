@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1400543268954661864}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,6 +164,10 @@ MonoBehaviour:
   sprite: {fileID: 1400543268954661866}
   fullHearts: {fileID: 1704535984374939473, guid: 5bce8fa96eb0d7f46a058e3deae87933, type: 3}
   emptyHearts: {fileID: 6287847047055270844, guid: 1c0a7a97c7a2ee24badf050b4402a593, type: 3}
+  notesText: {fileID: 0}
+  bombsText: {fileID: 0}
+  speedText: {fileID: 0}
+  damageText: {fileID: 0}
 --- !u!95 &1400543268954661864
 Animator:
   serializedVersion: 4
