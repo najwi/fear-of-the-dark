@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1251779752}
     m_Modifications:
+    - target: {fileID: 201356961940067528, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1251779751}
     - target: {fileID: 201356961940067532, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
       propertyPath: m_Name
       value: Hud

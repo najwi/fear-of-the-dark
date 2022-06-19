@@ -26,7 +26,7 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown("left")){
+        if(Input.GetKeyDown("right")){
             if(option > 0){
                 option--;
             }else{
@@ -35,7 +35,7 @@ public class Menu : MonoBehaviour
             UpdateMenu();
         }
 
-        if(Input.GetKeyDown("right")){
+        if(Input.GetKeyDown("left")){
             if(option < 2){
                 option++;
             }

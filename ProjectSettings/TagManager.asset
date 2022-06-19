@@ -20,7 +20,7 @@ TagManager:
   - HeartPickup
   - DamageUpPickup
   - SpeedUpPickup
-  - HealthUpPickup
+  - HealthPickup
   layers:
   - Default
   - TransparentFX
