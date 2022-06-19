@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: obstacleTemplates.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: shopWallSprites.Array.data[0]
@@ -809,6 +809,10 @@ PrefabInstance:
       propertyPath: obstacleTemplates.Array.data[1]
       value: 
       objectReference: {fileID: 6297055610315758478, guid: 09725b91d3e8caa4ba4c73055a65ca85, type: 3}
+    - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
+      propertyPath: obstacleTemplates.Array.data[2]
+      value: 
+      objectReference: {fileID: 517446138636981059, guid: fa2d7343ef624c54f84cfc5432c7bc71, type: 3}
     - target: {fileID: 5748331677407850091, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: m_Name
       value: RoomTemplates

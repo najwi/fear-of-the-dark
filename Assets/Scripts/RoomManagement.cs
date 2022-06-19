@@ -18,9 +18,16 @@ public class RoomManagement : MonoBehaviour
         int enemiesCount = 0;
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.CompareTag("ObstacleTemplate")){
-                if (roomElem.childCount <= 2){
-                    roomFinished = true;
+                foreach (Transform templateElem in roomElem){
+                    if(templateElem.gameObject.name == "Enemies"){
+                        if (templateElem.childCount == 0){
+                            roomFinished = true;
+                        }
+                    }
                 }
+                // if (roomElem.childCount <= 2){
+                //     roomFinished = true;
+                // }
             }
         }
         if (roomFinished){
