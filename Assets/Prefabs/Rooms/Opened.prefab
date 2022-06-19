@@ -2336,6 +2336,7 @@ MonoBehaviour:
   - {fileID: 1916614754469948631}
   - {fileID: 1916614753542985882}
   - {fileID: 1916614753338303563}
+  roomsOnTop: []
   topSpawnPoint: {fileID: 1916614753542985882}
   rightSpawnPoint: {fileID: 1916614753336109100}
   bottomSpawnPoint: {fileID: 1916614753338303563}

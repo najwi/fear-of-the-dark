@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3431706784600017178}
   - component: {fileID: 1294039105157845592}
   - component: {fileID: 7386452328665894285}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BottomEntrance
   m_TagString: Entrance
   m_Icon: {fileID: 0}
@@ -71,3 +71,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58105e5ce5e4be9489975c4fc6b7a176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  destinationView: {fileID: 0}

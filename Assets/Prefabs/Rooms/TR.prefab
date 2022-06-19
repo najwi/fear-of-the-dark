@@ -1275,7 +1275,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4092109777643264526
 Transform:
   m_ObjectHideFlags: 0
@@ -7291,6 +7291,7 @@ MonoBehaviour:
   leftDoor: 0
   bottomDoor: 0
   spawnPoints: []
+  roomsOnTop: []
   topSpawnPoint: {fileID: 872384583878590545}
   rightSpawnPoint: {fileID: 7464592992539382035}
   bottomSpawnPoint: {fileID: 0}
@@ -13506,7 +13507,7 @@ GameObject:
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5858892062148478982
 Transform:
   m_ObjectHideFlags: 0

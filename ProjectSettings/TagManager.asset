@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - AllyProjectile
+  - Room
+  - SpawnPoint
+  - Entrance
+  - Rooms
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - Enemy
   - Wall
   - Pickable
-  - 
+  - Entrances
   - 
   - 
   - 

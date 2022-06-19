@@ -34,6 +34,39 @@ public class RoomSpawner : MonoBehaviour
             // Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+        if (other.CompareTag("SpawnPoint")){
+            GameObject parentRoom = transform.parent.gameObject;
+            Debug.Log(parentRoom.name);
+            Debug.Log(gameObject.name);
+            GameObject otherRoom = other.transform.parent.gameObject;
+            Debug.Log(otherRoom.name);
+            Debug.Log(other.gameObject.name);
+
+            Destroy(gameObject);
+            int roomType = parentRoom.GetComponent<RoomGenerator>().roomType;
+            switch (roomType){
+                case 1:
+                    Instantiate(templates.topClosedRoom, parentRoom.transform.position, Quaternion.identity);
+                    break;
+                case 2:
+                    Instantiate(templates.rightClosedRoom, parentRoom.transform.position, Quaternion.identity);
+                    break;
+                case 3:
+                    Instantiate(templates.bottomClosedRoom, parentRoom.transform.position, Quaternion.identity);
+                    break;
+                case 4:
+                    Instantiate(templates.leftClosedRoom, parentRoom.transform.position, Quaternion.identity);
+                    break;
+                case 0:
+                    Debug.Log("From opened");
+                    break;
+                default:
+                    break;
+
+            }
+            Destroy(parentRoom);
+            Debug.Log("collision on - " + roomType);
+        }
 
         // if (other.CompareTag("SpawnPoint")){
         //     //  Instantiate(templates.closedRoom, transform.position, Quaternion.identity);

@@ -21,6 +21,7 @@ public class BossMaker : MonoBehaviour
 
     public void MakeBossRoom(){
         Transform walls = gameObject.transform.GetChild(0);
+        walls.gameObject.SetActive(true);
         Transform floor = gameObject.transform.GetChild(1);
         foreach (Transform wallChild in walls.gameObject.transform){
             SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();

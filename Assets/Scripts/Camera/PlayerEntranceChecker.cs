@@ -13,8 +13,11 @@ public class PlayerEntranceChecker : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player"){
+        if(other.CompareTag("Player")){
             cam.Move(destinationView);
+        }
+        if(other.CompareTag("AllyProjectile")){
+            Destroy(other.gameObject);
         }
     }
 }

@@ -19,6 +19,7 @@ public class RoomGenerator : MonoBehaviour
     
     public GameObject[] spawnPoints;
     private RoomTemplates templates;
+    public List<GameObject> roomsOnTop = new List<GameObject>();
 
     public static int minRoomQuantity = 10;
     public static int maxRoomQuantity = 40;
@@ -42,17 +43,64 @@ public class RoomGenerator : MonoBehaviour
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
 
+        switch (roomType){
+            case 1:
+                if (bottomSpawnPoint != null){
+                    bottomSpawnPoint.SetActive(true);
+                }
+                if (leftSpawnPoint != null){
+                    leftSpawnPoint.SetActive(true);
+                }
+                if (rightSpawnPoint != null){
+                    rightSpawnPoint.SetActive(true);
+                }
+                break;
+            case 2:
+                if (bottomSpawnPoint != null){
+                    bottomSpawnPoint.SetActive(true);
+                }
+                if (leftSpawnPoint != null){
+                    leftSpawnPoint.SetActive(true);
+                }
+                if (topSpawnPoint != null){
+                    topSpawnPoint.SetActive(true);
+                }
+                break;
+            case 3:
+                if (topSpawnPoint != null){
+                    topSpawnPoint.SetActive(true);
+                }
+                if (leftSpawnPoint != null){
+                    leftSpawnPoint.SetActive(true);
+                }
+                if (rightSpawnPoint != null){
+                    rightSpawnPoint.SetActive(true);
+                }
+                break;
+            case 4:
+                if (bottomSpawnPoint != null){
+                    bottomSpawnPoint.SetActive(true);
+                }
+                if (topSpawnPoint != null){
+                    topSpawnPoint.SetActive(true);
+                }
+                if (rightSpawnPoint != null){
+                    rightSpawnPoint.SetActive(true);
+                }
+                break;
+        }
+
         CustomizeRoom();
-        
+        // SpawnRoom();
         // Invoke("SpawnRoom", 0.1f);
         if (roomsSpawned < maxRoomQuantity){
             // SpawnRoom();
-            Invoke("SpawnRoom", 0.5f);
+            Invoke("SpawnRoom", 0.1f);
         }
         else{
             // Debug.Log("closedroom");
             // SpawnClosedRoom();
-            Invoke("SpawnClosedRoom", 0.5f);
+            Invoke("SpawnClosedRoom", 0.1f);
         }
     }
 
@@ -61,34 +109,50 @@ public class RoomGenerator : MonoBehaviour
         for (int i=0; i < 4; i++){
             if (i == 0){
                 if (topSpawnPoint != null){
-                    rand = Random.Range(0, templates.topRooms.Length);
-                    adjacentRooms.Add(Instantiate(templates.topRooms[rand], topSpawnPoint.transform.position, Quaternion.identity));
-                    // Instantiate(templates.topRooms[rand], topSpawnPoint.transform.position, Quaternion.identity);
-                    Destroy(topSpawnPoint);
-                    roomsSpawned++;
+                    if (topSpawnPoint.activeSelf){
+                        rand = Random.Range(0, templates.topRooms.Length);
+                        GameObject topRoom = Instantiate(templates.topRooms[rand], topSpawnPoint.transform.position, Quaternion.identity);
+                        topRoom.GetComponent<RoomGenerator>().roomType = 3;
+                        adjacentRooms.Add(topRoom);
+                        // Instantiate(templates.topRooms[rand], topSpawnPoint.transform.position, Quaternion.identity);
+                        Destroy(topSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }else if (i == 1){
                 if (rightSpawnPoint != null){
-                    rand = Random.Range(0, templates.rightRooms.Length);
-                    adjacentRooms.Add(Instantiate(templates.rightRooms[rand], rightSpawnPoint.transform.position, Quaternion.identity));
-                    Destroy(rightSpawnPoint);
-                    roomsSpawned++;
+                    if (rightSpawnPoint.activeSelf){
+                        rand = Random.Range(0, templates.rightRooms.Length);
+                        GameObject rightRoom = Instantiate(templates.rightRooms[rand], rightSpawnPoint.transform.position, Quaternion.identity);
+                        rightRoom.GetComponent<RoomGenerator>().roomType = 4;
+                        adjacentRooms.Add(rightRoom);
+                        Destroy(rightSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }
             else if (i == 2){
                 if (bottomSpawnPoint != null){
-                    rand = Random.Range(0, templates.bottomRooms.Length);
-                    adjacentRooms.Add(Instantiate(templates.bottomRooms[rand], bottomSpawnPoint.transform.position, Quaternion.identity));
-                    Destroy(bottomSpawnPoint);
-                    roomsSpawned++;
+                    if (bottomSpawnPoint.activeSelf){
+                        rand = Random.Range(0, templates.bottomRooms.Length);
+                        GameObject bottomRoom = Instantiate(templates.bottomRooms[rand], bottomSpawnPoint.transform.position, Quaternion.identity);
+                        bottomRoom.GetComponent<RoomGenerator>().roomType = 1;
+                        adjacentRooms.Add(bottomRoom);
+                        Destroy(bottomSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }
             else if (i == 3){
                 if (leftSpawnPoint != null){
-                    rand = Random.Range(0, templates.leftRooms.Length);
-                    adjacentRooms.Add(Instantiate(templates.leftRooms[rand], leftSpawnPoint.transform.position, Quaternion.identity));
-                    Destroy(leftSpawnPoint);
-                    roomsSpawned++;
+                    if (leftSpawnPoint.activeSelf){
+                        rand = Random.Range(0, templates.leftRooms.Length);
+                        GameObject leftRoom = Instantiate(templates.leftRooms[rand], leftSpawnPoint.transform.position, Quaternion.identity);
+                        leftRoom.GetComponent<RoomGenerator>().roomType = 2;
+                        adjacentRooms.Add(leftRoom);
+                        Destroy(leftSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }
         }
@@ -98,40 +162,49 @@ public class RoomGenerator : MonoBehaviour
         for (int i=0; i < 4; i++){
             if (i == 0){
                 if (topSpawnPoint != null){
-                    adjacentRooms.Add(Instantiate(templates.bottomClosedRoom, topSpawnPoint.transform.position, Quaternion.identity));
-                    Destroy(topSpawnPoint);
-                    roomsSpawned++;
+                    if (topSpawnPoint.activeSelf){
+                        adjacentRooms.Add(Instantiate(templates.bottomClosedRoom, topSpawnPoint.transform.position, Quaternion.identity));
+                        Destroy(topSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }else if (i == 1){
                 if (rightSpawnPoint != null){
-                    adjacentRooms.Add(Instantiate(templates.leftClosedRoom, rightSpawnPoint.transform.position, Quaternion.identity));
-                    Destroy(rightSpawnPoint);
-                    roomsSpawned++;
+                    if (rightSpawnPoint.activeSelf){
+                        adjacentRooms.Add(Instantiate(templates.leftClosedRoom, rightSpawnPoint.transform.position, Quaternion.identity));
+                        Destroy(rightSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }
             else if (i == 2){
                 if (bottomSpawnPoint != null){
-                    adjacentRooms.Add(Instantiate(templates.topClosedRoom, bottomSpawnPoint.transform.position, Quaternion.identity));
-                    Destroy(bottomSpawnPoint);
-                    roomsSpawned++;
+                    if (bottomSpawnPoint.activeSelf){
+                        adjacentRooms.Add(Instantiate(templates.topClosedRoom, bottomSpawnPoint.transform.position, Quaternion.identity));
+                        Destroy(bottomSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }
             else if (i == 3){
                 if (leftSpawnPoint != null){
-                    adjacentRooms.Add(Instantiate(templates.rightClosedRoom, leftSpawnPoint.transform.position, Quaternion.identity));
-                    Destroy(leftSpawnPoint);
-                    roomsSpawned++;
+                    if (leftSpawnPoint.activeSelf){
+                        adjacentRooms.Add(Instantiate(templates.rightClosedRoom, leftSpawnPoint.transform.position, Quaternion.identity));
+                        Destroy(leftSpawnPoint);
+                        roomsSpawned++;
+                    }
                 }
             }
         }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Room")){
-            Instantiate(templates.closedRoom, other.gameObject.transform.position, Quaternion.identity);
-            adjacentRooms.Remove(other.gameObject);
-            Destroy(other.gameObject);
-        }
+        // if (other.CompareTag("Room")){
+        //     // roomsOnTop.Add(Instantiate(templates.closedRoom, other.gameObject.transform.position, Quaternion.identity));
+        //     adjacentRooms.Remove(other.gameObject);
+        //     Destroy(other.gameObject);
+        //     Destroy(gameObject);
+        // }
         // if (topSpawnPoint != null){
         //     Destroy(topSpawnPoint);
         // }
@@ -147,21 +220,23 @@ public class RoomGenerator : MonoBehaviour
     }
 
     void CustomizeRoom() {
-        Transform walls = gameObject.transform.GetChild(0);
-        Transform floor = gameObject.transform.GetChild(1);
-        foreach (Transform wallChild in walls.gameObject.transform){
-            SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
-            int random = Random.Range(0, templates.wallSprites.Length);
-            wallChildSpriteRenderer.sprite = templates.wallSprites[random];
-            // Something(child.gameObject);
+        if (gameObject.name != "Closed"){
+            Transform walls = gameObject.transform.GetChild(0);
+            Transform floor = gameObject.transform.GetChild(1);
+            foreach (Transform wallChild in walls.gameObject.transform){
+                SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
+                int random = Random.Range(0, templates.wallSprites.Length);
+                wallChildSpriteRenderer.sprite = templates.wallSprites[random];
+                // Something(child.gameObject);
+            }
+            foreach (Transform floorChild in floor.gameObject.transform){
+                SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
+                int random = Random.Range(0, templates.floorSprites.Length);
+                floorChildSpriteRenderer.sprite = templates.floorSprites[random];
+            }
+            int r = Random.Range(0, templates.obstacleTemplates.Length);
+            Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity);
         }
-        foreach (Transform floorChild in floor.gameObject.transform){
-            SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
-            int random = Random.Range(0, templates.floorSprites.Length);
-            floorChildSpriteRenderer.sprite = templates.floorSprites[random];
-        }
-        int r = Random.Range(0, templates.obstacleTemplates.Length);
-        Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
