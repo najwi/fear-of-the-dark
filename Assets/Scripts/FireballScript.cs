@@ -34,9 +34,13 @@ public class FireballScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("hit");
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.TakeDamage(damage);
+            Debug.Log("hit playeR for: " + damage);
+            gameObject.SetActive(false);
+            if (player)
+                player.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

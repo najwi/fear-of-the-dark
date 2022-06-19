@@ -30,9 +30,6 @@ public class EnemyGogScript : MonoBehaviour
     private float lastAttackTime = -2.5f;
     private bool isDead = false;
 
-    int fireballsSpawned = 3;
-    int currentFireballsSpawned = 0;
-
     void Start()
     {
         player = GameObject.Find("Player");
@@ -168,8 +165,7 @@ public class EnemyGogScript : MonoBehaviour
         Vector2 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
-        SpawnFireball(direction, angle); 
-        currentFireballsSpawned += 1;
+        SpawnFireball(direction, angle);
     }
 
     public void FinalizeAttack()
