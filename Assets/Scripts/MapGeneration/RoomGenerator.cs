@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class RoomGenerator : MonoBehaviour
 {
@@ -31,14 +32,10 @@ public class RoomGenerator : MonoBehaviour
     public GameObject leftSpawnPoint;
 
     private int rand;
-    // public 
 
     public List<GameObject> adjacentRooms = new List<GameObject>();
     public static GameObject bossRoom;
 
-    // public SpriteRenderer spriteRenderer;
-
-    // Start is called before the first frame update
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
@@ -91,21 +88,16 @@ public class RoomGenerator : MonoBehaviour
         }
 
         CustomizeRoom();
-        // SpawnRoom();
-        // Invoke("SpawnRoom", 0.1f);
+
         if (roomsSpawned < maxRoomQuantity){
-            // SpawnRoom();
-            Invoke("SpawnRoom", 0.1f);
+            Invoke("SpawnRoom", 0.2f);
         }
         else{
-            // Debug.Log("closedroom");
-            // SpawnClosedRoom();
             Invoke("SpawnClosedRoom", 0.1f);
         }
     }
 
     void SpawnRoom(){
-        // int i = 0;
         for (int i=0; i < 4; i++){
             if (i == 0){
                 if (topSpawnPoint != null){
@@ -227,7 +219,6 @@ public class RoomGenerator : MonoBehaviour
                 SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
                 int random = Random.Range(0, templates.wallSprites.Length);
                 wallChildSpriteRenderer.sprite = templates.wallSprites[random];
-                // Something(child.gameObject);
             }
             foreach (Transform floorChild in floor.gameObject.transform){
                 SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
@@ -237,11 +228,5 @@ public class RoomGenerator : MonoBehaviour
             int r = Random.Range(0, templates.obstacleTemplates.Length);
             Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

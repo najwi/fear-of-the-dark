@@ -8,35 +8,16 @@ public class RoomDesigner : MonoBehaviour
     private int longestPath = -1;
     public static GameObject bossRoom;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         Invoke("Begin", 8.5f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void Begin(){
         List<GameObject> adjacentRooms = entryPoint.GetComponent<RoomGenerator>().adjacentRooms;
         FindBossRoom(entryPoint, 0);
         while (bossRoom == null){
-            Debug.Log("Waiting");
-        }
-        Debug.Log("Finished");
-        if (bossRoom == null)
-            Debug.Log("null");
-
-        if (bossRoom.GetComponent<BossMaker>() == null){
-            Debug.Log("Script null");
-        }
-
-        if (bossRoom.GetComponent<BossMaker>().checker == null){
-            Debug.Log("Checker null");
+            
         }
         bossRoom.GetComponent<BossMaker>().checker.SetActive(true);
         bossRoom.GetComponent<BossMaker>().MakeBossRoom();
@@ -54,13 +35,6 @@ public class RoomDesigner : MonoBehaviour
             longestPath = depth;
             bossRoom = adjacentRoom;
         }
-        // if (adjacentRooms == null){
-        //     if (depth > longestPath){
-        //         longestPath = depth;
-        //         bossRoom = adjacentRoom;
-        //         Debug.Log("Found2");
-        //     }
-        // }
 
         foreach (var room in adjacentRooms)
         {
