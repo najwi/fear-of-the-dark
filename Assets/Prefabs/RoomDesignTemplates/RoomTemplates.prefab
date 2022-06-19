@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.54045576, y: 0.123600155, z: -16.631927}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,3 +100,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 45daba50fcd0cb742a5955f5cd6238a1, type: 3}
   - {fileID: 21300000, guid: ee5db350961a943429c088ae52de1d63, type: 3}
   - {fileID: 21300000, guid: 36839f1c16e68ed44be6b20aae0737ac, type: 3}
+  obstacleTemplates: []
+  closedDoor: {fileID: 21300000, guid: e02f1d523ed7a314ba07f05aa7cbafdf, type: 3}
+  openedDoor: {fileID: 21300000, guid: 5a94a3f6f58291b43b7fe9688a85c01f, type: 3}

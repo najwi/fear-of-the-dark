@@ -212,23 +212,30 @@ public class RoomGenerator : MonoBehaviour
     }
 
     void CustomizeRoom() {
-        if (gameObject.name != "Closed"){
-            Transform walls = gameObject.transform.GetChild(0);
-            Transform floor = gameObject.transform.GetChild(1);
+        Transform walls = gameObject.transform.GetChild(0);
+        Transform floor = gameObject.transform.GetChild(1);
+        
+        foreach (Transform floorChild in floor.gameObject.transform){
+            SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
+            int random = Random.Range(0, templates.floorSprites.Length);
+            floorChildSpriteRenderer.sprite = templates.floorSprites[random];
+        }
+        if (gameObject.name != "Shop"){
             foreach (Transform wallChild in walls.gameObject.transform){
                 SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
                 int random = Random.Range(0, templates.wallSprites.Length);
                 wallChildSpriteRenderer.sprite = templates.wallSprites[random];
             }
-            foreach (Transform floorChild in floor.gameObject.transform){
-                SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
-                int random = Random.Range(0, templates.floorSprites.Length);
-                floorChildSpriteRenderer.sprite = templates.floorSprites[random];
+        }else{
+            foreach (Transform wallChild in walls.gameObject.transform){
+                SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
+                int random = Random.Range(0, templates.shopWallSprites.Length);
+                wallChildSpriteRenderer.sprite = templates.shopWallSprites[random];
             }
-            int r = Random.Range(0, templates.obstacleTemplates.Length);
-            if (gameObject.name != "Opened"){
-                Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
-            }
+        }
+        int r = Random.Range(0, templates.obstacleTemplates.Length);
+        if (gameObject.name != "Opened" && gameObject.name != "Shop"){
+            Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
         }
     }
 }
