@@ -10,6 +10,7 @@ TagManager:
   - Entrance
   - Rooms
   - Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX
