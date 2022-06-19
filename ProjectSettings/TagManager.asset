@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - Enemy
   - Entrance
+  - ObstacleTemplate
   layers:
   - Default
   - TransparentFX
