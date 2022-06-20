@@ -4,11 +4,13 @@ using UnityEngine;
 public class BelzeebossHandScript : MonoBehaviour
 {
     private Vector3 handPosition;
-    private SpriteRenderer sprite;
+    private EnemyBossBeelzebossScript bossHead;
+    private Animator anim;
 
     private void Start()
     {
-        sprite = gameObject.GetComponent<SpriteRenderer>();
+        bossHead = GameObject.Find("Beelzeboss_head").GetComponent<EnemyBossBeelzebossScript>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     public void MoveHandToSmash()
@@ -37,20 +39,6 @@ public class BelzeebossHandScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("AllyProjectile"))
-            StartCoroutine(StrobeColorHelper(0, 5, sprite, Color.white, new Color(1, 1, 1, 0.5f)));
-    }
-
-    private IEnumerator StrobeColorHelper(int _i, int _stopAt, SpriteRenderer _mySprite, Color _color, Color _toStrobe)
-    {
-        if (_i <= _stopAt)
-        {
-            if (_i % 2 == 0)
-                _mySprite.color = _toStrobe;
-            else
-                _mySprite.color = _color;
-
-            yield return new WaitForSeconds(.1f);
-            StartCoroutine(StrobeColorHelper((_i + 1), _stopAt, _mySprite, _color, _toStrobe));
-        }
+            bossHead.TakeDamage(collision.gameObject.GetComponent<Bullet>());
     }
 }

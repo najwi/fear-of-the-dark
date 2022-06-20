@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class EnemyBossBeelzebossScript : MonoBehaviour
 {
+    #region variables
     public GameObject bossCamera;
     public GameObject leftHand;
     public GameObject rightHand;
     public GameObject fireball;
+    public BossHealthBarScript healthBar;
+    public int health = 300;
     public float attacksDelayTime = 5;
     public int fireballsCount = 10;
     public int fireballAttackDamage = 2;
@@ -16,28 +19,144 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
     private GameObject player;
     private PlayerMovementScript playerScript;
     private Animator anim;
-    private SpriteRenderer sprite;
-    private bool attacking = false;
+    private SpriteRenderer headSprite;
+    private SpriteRenderer handLSprite;
+    private SpriteRenderer handRSprite;
+
+    private bool canAttack = false;
+    private GameObject[] fireballs;
+    #endregion variables
 
     private void Start()
     {
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerMovementScript>();
         anim = gameObject.GetComponent<Animator>();
-        for (int i = 0; i < 100; i++)
-            Destroy(fireball.GetComponent<FireballScript>());
-        sprite = gameObject.GetComponent<SpriteRenderer>();
+        headSprite = gameObject.GetComponent<SpriteRenderer>();
+        handLSprite = leftHand.GetComponent<SpriteRenderer>();
+        handRSprite = rightHand.GetComponent<SpriteRenderer>();
+        fireballs = new GameObject[fireballsCount];
+
+        healthBar.SetBossName("Beelzeboss");
+        healthBar.SetBossMaxHealth(health);
     }
 
     void Update()
     {
-        if (attacking)
+        if (canAttack)
         {
-            ThrowFireballs();
-            StartCoroutine(PauseBetweenAttacks(attacksDelayTime));
+            DoRandomAttack();
         }
     }
 
+    #region attacks
+    private IEnumerator PauseBetweenAttacks(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canAttack = true;
+    }
+
+    private void DoRandomAttack()
+    {
+        float rand = Random.Range(0.0f, 1.0f);
+        // 80% chance of fireballs
+        if (rand < 0.8f)
+        {
+            ThrowFireballs();
+        }
+        // 20% chance of spawning new enemies
+        else
+        {
+
+        }
+    }
+    #region throwFireballSpread
+    private void ThrowFireballs()
+    {
+        canAttack = false;
+        anim.SetTrigger("fire");
+        float offsetMultiplier = 1;
+        Vector2 target = new Vector2(player.transform.position.x + 6, player.transform.position.y);
+        if (Random.Range(0.0f, 1.0f) < 0.5f)
+        {
+            offsetMultiplier = -1;
+            target = new Vector2(player.transform.position.x - 6, player.transform.position.y);
+        }
+
+        float offsetX = 0;
+        for (int i = 0; i < fireballsCount; i++)
+        {
+            StartCoroutine(SpawnFireballWithDelay((i + 1) * fireballDelay, offsetX, i == fireballsCount - 1, target, i));
+            offsetX += offsetMultiplier * fireballSpread;
+        }
+    }
+
+    private IEnumerator SpawnFireballWithDelay(float delay, float offsetX, bool last, Vector2 target, int index)
+    {
+        yield return new WaitForSeconds(delay);
+        var ball = Instantiate(fireball);
+        ball.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+        fireballs[index] = ball;
+
+        Vector2 direction = target - (Vector2)transform.position;
+        direction = new Vector2(direction.x - offsetX, direction.y);
+        direction.Normalize();
+
+        FireballScript script = ball.AddComponent<FireballScript>();
+        script.damage = fireballAttackDamage;
+        script.direction = direction;
+        script.player = playerScript;
+
+        if (last)
+        {
+            anim.SetTrigger("idle");
+            StartCoroutine(PauseBetweenAttacks(attacksDelayTime));
+        }
+    }
+    #endregion throwFireballSpread
+
+    #endregion attacks
+
+    #region takingDamage
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("AllyProjectile"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<Bullet>());
+        }
+    }
+
+    public void TakeDamage(Bullet bullet)
+    {
+        health -= bullet.dmg;
+        if (health <= 0)
+        {
+            health = 0;
+            anim.SetTrigger("die");
+            StopAttacks();
+        }
+        else
+        {
+            StartCoroutine(StrobeColorHelper(0, 5, headSprite, Color.white, new Color(1, 1, 1, 0.5f)));
+            StartCoroutine(StrobeColorHelper(0, 5, handLSprite, Color.white, new Color(1, 1, 1, 0.5f)));
+            StartCoroutine(StrobeColorHelper(0, 5, handRSprite, Color.white, new Color(1, 1, 1, 0.5f)));
+        }
+        healthBar.SetBossCurrentHealth(health);
+    }
+
+    private void StopAttacks()
+    {
+        StopAllCoroutines();
+        canAttack = false;
+        foreach (var ball in fireballs)
+        {
+            if (ball)
+                Destroy(ball);
+        }
+    }
+    #endregion takingDamage
+
+    #region animation
     public void ShowHands()
     {
         leftHand.GetComponent<SpriteRenderer>().enabled = true;
@@ -54,7 +173,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
     public void ResetCamera()
     {
         bossCamera.GetComponent<BossCameraController>().Unlock();
-        attacking = true;
+        canAttack = true;
     }
 
     public void CutsceneCancel()
@@ -62,13 +181,6 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
         transform.position = new Vector3(transform.position.x, 16, transform.position.z);
         StartCoroutine(PauseBetweenAttacks(1));
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("AllyProjectile"))
-            StartCoroutine(StrobeColorHelper(0, 5, sprite, Color.white, new Color(1, 1, 1, 0.5f)));
-    }
-
     private IEnumerator StrobeColorHelper(int _i, int _stopAt, SpriteRenderer _mySprite, Color _color, Color _toStrobe)
     {
         if (_i <= _stopAt)
@@ -82,49 +194,23 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
             StartCoroutine(StrobeColorHelper((_i + 1), _stopAt, _mySprite, _color, _toStrobe));
         }
     }
-
-    private IEnumerator PauseBetweenAttacks(float time)
+    public void FadeOut()
     {
-        attacking = false;
-        yield return new WaitForSeconds(time);
-        attacking = true;
+        StartCoroutine(FadeToDestroy(headSprite, 0.0f, 2.0f));
+        StartCoroutine(FadeToDestroy(handLSprite, 0.0f, 2.0f));
+        StartCoroutine(FadeToDestroy(handRSprite, 0.0f, 2.0f));
     }
 
-    private void ThrowFireballs()
+    private IEnumerator FadeToDestroy(SpriteRenderer sprite, float aValue, float aTime)
     {
-        anim.SetTrigger("fire");
-        float offsetMultiplier = 1;
-        Vector2 target = new Vector2(player.transform.position.x + 6, player.transform.position.y);
-        if (Random.Range(0.0f, 1.0f) < 0.5f)
+        float alpha = sprite.material.color.a;
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
         {
-            offsetMultiplier = -1;
-            target = new Vector2(player.transform.position.x - 6, player.transform.position.y);
+            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, aValue, t));
+            sprite.material.color = newColor;
+            yield return null;
         }
-
-        float offsetX = 0;
-        for (int i = 0; i < fireballsCount; i++)
-        {
-            StartCoroutine(SpawnFireballWithDelay((i + 1) * fireballDelay, offsetX, i == fireballsCount - 1, target));
-            offsetX += offsetMultiplier * fireballSpread;
-        }
+        Destroy(sprite.gameObject);
     }
-
-    private IEnumerator SpawnFireballWithDelay(float delay, float offsetX, bool last, Vector2 target)
-    {
-        yield return new WaitForSeconds(delay);
-        var ball = Instantiate(fireball);
-        ball.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
-
-        Vector2 direction = target - (Vector2)transform.position;
-        direction = new Vector2(direction.x - offsetX, direction.y);
-        direction.Normalize();
-
-        FireballScript script = ball.AddComponent<FireballScript>();
-        script.damage = fireballAttackDamage;
-        script.direction = direction;
-        script.player = playerScript;
-
-        if (last)
-            anim.SetTrigger("idle");
-    }
+    #endregion animation
 }
