@@ -36,7 +36,9 @@ public class FireballScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.TakeDamage(damage);
+            gameObject.SetActive(false);
+            if (player)
+                player.TakeDamage(damage);
         }
         Destroy(gameObject);
     }

@@ -59,5 +59,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: fireball_up Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8368951082990863331, guid: 319a8dbc0d14ef94b85f83944aa3d57d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 319a8dbc0d14ef94b85f83944aa3d57d, type: 3}

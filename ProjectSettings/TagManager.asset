@@ -21,6 +21,7 @@ TagManager:
   - SpeedUpPickup
   - HealthUpPickup
   - HealthPickup
+  - Music
   layers:
   - Default
   - TransparentFX
@@ -38,8 +39,8 @@ TagManager:
   - Entrances
   - Explosion
   - Rocks
-  - 
-  - 
+  - BossWall
+  - Boss
   - 
   - 
   - 

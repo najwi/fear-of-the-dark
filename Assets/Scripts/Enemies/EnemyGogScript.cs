@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class EnemyGogScript : MonoBehaviour
+public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
 {
     public bool isNotAttacking = true;
     public float moveSpeed = 1.5f;
@@ -29,9 +29,6 @@ public class EnemyGogScript : MonoBehaviour
     private float lastMoveTime = -5f;
     private float lastAttackTime = -2.5f;
     private bool isDead = false;
-
-    int fireballsSpawned = 3;
-    int currentFireballsSpawned = 0;
 
     void Start()
     {
@@ -168,8 +165,7 @@ public class EnemyGogScript : MonoBehaviour
         Vector2 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         direction.Normalize();
-        SpawnFireball(direction, angle); 
-        currentFireballsSpawned += 1;
+        SpawnFireball(direction, angle);
     }
 
     public void FinalizeAttack()
@@ -227,5 +223,11 @@ public class EnemyGogScript : MonoBehaviour
     {
         if (health <= 0)
             Destroy(gameObject);
+    }
+
+    public bool TakeBombDamage(int damage)
+    {
+        TakeDamage(damage);
+        return true;
     }
 }

@@ -82,6 +82,7 @@ public class SettingsScript : MonoBehaviour
 
         PlayerPrefs.SetFloat("volume", newVol);
         SetSlider(newVol);
+        AudioListener.volume = newVol;
     }
 
     void SetSlider(){
