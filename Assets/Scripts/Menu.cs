@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
         Cursor.visible = false;
 
         UpdateMenu();
+        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayMusic();
     }
 
     void Update()
@@ -47,7 +48,10 @@ public class Menu : MonoBehaviour
 
         if(Input.GetKeyDown("space") || Input.GetKeyDown("enter")){
             switch(option){
-                case 0: SceneManager.LoadScene("Game"); break;
+                case 0: 
+                    SceneManager.LoadScene("Game"); 
+                    GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().StopMusic(); 
+                    break;
                 case 1: SceneManager.LoadScene("SettingsScene"); break;
                 case 2: Application.Quit(); break;
             }

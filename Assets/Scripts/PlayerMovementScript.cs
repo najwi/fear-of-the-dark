@@ -37,6 +37,7 @@ public class PlayerMovementScript : MonoBehaviour
     public int itemPrice = 10;
     public AudioSource itemPickupSound;
     public AudioSource shootSound;
+    private bool paused;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class PlayerMovementScript : MonoBehaviour
         currentHp = maxHp;
         UpdateHud();
         AudioListener.volume = PlayerPrefs.GetFloat("volume", 0.5f);
+        paused = false;
     }
 
     private void Update()
@@ -79,6 +81,17 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void GetInputs()
     {
+        if(Input.GetKeyDown("c")){
+            noDmg = !noDmg;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Pause();
+        }
+        
+        if(paused)
+            return;
+
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -144,9 +157,15 @@ public class PlayerMovementScript : MonoBehaviour
         if(Input.GetKeyDown("e")){
             PlaceBomb();
         }
+    }
 
-        if(Input.GetKeyDown("c")){
-            noDmg = !noDmg;
+    private void Pause(){
+        if(!paused){
+            Time.timeScale = 0;
+            paused = true;
+        }else{
+            Time.timeScale = 1;
+            paused = false;
         }
     }
 

@@ -21,6 +21,7 @@ TagManager:
   - SpeedUpPickup
   - HealthUpPickup
   - HealthPickup
+  - Music
   layers:
   - Default
   - TransparentFX
