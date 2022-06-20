@@ -66,10 +66,12 @@ public class RoomDesigner : MonoBehaviour
         List<GameObject> adjacentRooms = adjacentRoom.GetComponent<RoomGenerator>().adjacentRooms;
 
         if (depth != 0 && adjacentRoom.name != "Shop"){
-            if (longestPath/depth >= 2){
+            if (longestPath/depth > 3){
                 adjacentRoom.GetComponent<BossMaker>().SetDifficulty(0);
-            }else{
+            }else if(longestPath/depth >= 2 && longestPath/depth <= 3){
                 adjacentRoom.GetComponent<BossMaker>().SetDifficulty(1);
+            }else{
+                adjacentRoom.GetComponent<BossMaker>().SetDifficulty(2);
             }
         }
 

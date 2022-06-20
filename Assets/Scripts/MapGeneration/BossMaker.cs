@@ -62,7 +62,32 @@ public class BossMaker : MonoBehaviour
             if (gameObject.name != "Opened" && gameObject.name != "Shop"){
                 Instantiate(templates.easyObstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
             }
+        }else if (diff == 1){
+            foreach (Transform floorChild in floor.gameObject.transform){
+                SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
+                int random = Random.Range(0, templates.mediumFloorSprites.Length);
+                floorChildSpriteRenderer.sprite = templates.mediumFloorSprites[random];
+            }
+            foreach (Transform wallChild in walls.gameObject.transform){
+                SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
+                int random = Random.Range(0, templates.mediumWallSprites.Length);
+                wallChildSpriteRenderer.sprite = templates.mediumWallSprites[random];
+            }
+            int r = Random.Range(0, templates.mediumObstacleTemplates.Length);
+            if (gameObject.name != "Opened" && gameObject.name != "Shop"){
+                Instantiate(templates.mediumObstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+            }
         }else{
+            foreach (Transform floorChild in floor.gameObject.transform){
+                SpriteRenderer floorChildSpriteRenderer = floorChild.gameObject.GetComponent<SpriteRenderer>();
+                int random = Random.Range(0, templates.hardFloorSprites.Length);
+                floorChildSpriteRenderer.sprite = templates.hardFloorSprites[random];
+            }
+            foreach (Transform wallChild in walls.gameObject.transform){
+                SpriteRenderer wallChildSpriteRenderer = wallChild.gameObject.GetComponent<SpriteRenderer>();
+                int random = Random.Range(0, templates.hardWallSprites.Length);
+                wallChildSpriteRenderer.sprite = templates.hardWallSprites[random];
+            }
             int r = Random.Range(0, templates.hardObstacleTemplates.Length);
             if (gameObject.name != "Opened" && gameObject.name != "Shop"){
                 Instantiate(templates.hardObstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
