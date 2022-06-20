@@ -60,7 +60,7 @@ public class BossCameraController : MonoBehaviour
 
     private void GetInput()
     {
-        if(Input.GetKey(KeyCode.Escape) && !unlocked)  // Stop cutscene
+        if(Input.GetKey(KeyCode.Space) && !unlocked)  // Stop cutscene
         {
             var head = boss.transform.Find("Beelzeboss_head").gameObject;
             var handL = boss.transform.Find("Beelzeboss_handL").gameObject;

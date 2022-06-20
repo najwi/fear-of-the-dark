@@ -176,14 +176,16 @@ public class EnemyHoundScript : MonoBehaviour, TakeBombDamageDecorator
     public void TakeDamage(int damage)
     {
         health -= damage;
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
         anim.SetTrigger("die");
     }
 
     private void TakeDamageFinalize()
     {
         if (health <= 0)
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Destroy(gameObject);
+        }
     }
 
     public bool TakeBombDamage(int damage)

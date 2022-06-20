@@ -79,5 +79,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: fireball_bottom_boss
       objectReference: {fileID: 0}
+    - target: {fileID: 4304603669355013059, guid: 6bb678c898ef026429cb95cd09a2df6d, type: 3}
+      propertyPath: m_TagString
+      value: EnemyProjectile
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bb678c898ef026429cb95cd09a2df6d, type: 3}
