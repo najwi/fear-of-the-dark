@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BelzeebossHandScript : MonoBehaviour
+public class BelzeebossHandScript : MonoBehaviour, TakeBombDamageDecorator
 {
     private Vector3 handPosition;
     private EnemyBossBeelzebossScript bossHead;
@@ -39,6 +39,11 @@ public class BelzeebossHandScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("AllyProjectile"))
-            bossHead.TakeDamage(collision.gameObject.GetComponent<Bullet>());
+            bossHead.TakeDamage(collision.gameObject.GetComponent<Bullet>().dmg);
+    }
+    public bool TakeBombDamage(int damage)
+    {
+        bossHead.TakeDamage(damage);
+        return true;
     }
 }

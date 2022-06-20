@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(CircleCollider2D))]
-public class EnemyHoundScript : MonoBehaviour
+public class EnemyHoundScript : MonoBehaviour, TakeBombDamageDecorator
 {
     public bool isNotAttacking = true;
     public float moveSpeed = 2f;
@@ -183,5 +183,11 @@ public class EnemyHoundScript : MonoBehaviour
     {
         if (health <= 0)
             Destroy(gameObject);
+    }
+
+    public bool TakeBombDamage(int damage)
+    {
+        TakeDamage(damage);
+        return true;
     }
 }

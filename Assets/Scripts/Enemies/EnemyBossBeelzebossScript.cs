@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyBossBeelzebossScript : MonoBehaviour
+public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
 {
     #region variables
     public GameObject bossCamera;
@@ -67,10 +67,10 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
         // 20% chance of spawning new enemies
         else
         {
-
+            SpawnEnemies();
         }
     }
-    #region throwFireballSpread
+    #region ThrowFireballs
     private void ThrowFireballs()
     {
         canAttack = false;
@@ -113,8 +113,14 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
             StartCoroutine(PauseBetweenAttacks(attacksDelayTime));
         }
     }
-    #endregion throwFireballSpread
+    #endregion ThrowFireballs
 
+    #region SpawnEnemies
+    private void SpawnEnemies()
+    {
+
+    }
+    #endregion SpawnEnemies
     #endregion attacks
 
     #region takingDamage
@@ -122,13 +128,13 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("AllyProjectile"))
         {
-            TakeDamage(collision.gameObject.GetComponent<Bullet>());
+            TakeDamage(collision.gameObject.GetComponent<Bullet>().dmg);
         }
     }
 
-    public void TakeDamage(Bullet bullet)
+    public void TakeDamage(int damage)
     {
-        health -= bullet.dmg;
+        health -= damage;
         if (health <= 0)
         {
             health = 0;
@@ -142,6 +148,11 @@ public class EnemyBossBeelzebossScript : MonoBehaviour
             StartCoroutine(StrobeColorHelper(0, 5, handRSprite, Color.white, new Color(1, 1, 1, 0.5f)));
         }
         healthBar.SetBossCurrentHealth(health);
+    }
+    public bool TakeBombDamage(int damage)
+    {
+        TakeDamage(damage);
+        return true;
     }
 
     private void StopAttacks()

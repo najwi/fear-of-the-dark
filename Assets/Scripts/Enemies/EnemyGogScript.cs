@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
-public class EnemyGogScript : MonoBehaviour
+public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
 {
     public bool isNotAttacking = true;
     public float moveSpeed = 1.5f;
@@ -223,5 +223,11 @@ public class EnemyGogScript : MonoBehaviour
     {
         if (health <= 0)
             Destroy(gameObject);
+    }
+
+    public bool TakeBombDamage(int damage)
+    {
+        TakeDamage(damage);
+        return true;
     }
 }
