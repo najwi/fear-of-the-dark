@@ -134,19 +134,19 @@ public class PlayerMovementScript : MonoBehaviour
                 FireRight();
                 shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
-            }
+            }else
 
             if(Input.GetKey("left")){
                 FireLeft();
                 shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
-            }
+            }else
 
             if(Input.GetKey("down")){
                 FireDown();
                 shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
-            }
+            }else
 
             if(Input.GetKey("up")){
                 FireUp();
