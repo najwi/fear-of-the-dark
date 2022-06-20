@@ -27,8 +27,8 @@ public class Player2Movement : MonoBehaviour
     public SpriteRenderer sprite;
     private bool alive = true;
     private int guiHeartsCount;
-    public GameObject fullHearts;
-    public GameObject emptyHearts;
+    // public GameObject fullHearts;
+    // public GameObject emptyHearts;
     // public TextMeshProUGUI notesText;
     // public TextMeshProUGUI bombsText;
     // public TextMeshProUGUI speedText;
@@ -38,7 +38,9 @@ public class Player2Movement : MonoBehaviour
     public AudioSource itemPickupSound;
     public AudioSource shootSound;
     private bool paused;
-    public GameObject pauseText;
+
+    public GameObject player;
+    // public GameObject pauseText;
 
     void Start()
     {
@@ -74,10 +76,10 @@ public class Player2Movement : MonoBehaviour
     }
     
     private void UpdateHearts(){
-        for(int i = 0; i < fullHearts.transform.childCount; i++){
-            fullHearts.transform.GetChild(i).gameObject.SetActive(i<currentHp);
-            emptyHearts.transform.GetChild(i).gameObject.SetActive(i>=currentHp && i<maxHp);
-        }
+        // for(int i = 0; i < fullHearts.transform.childCount; i++){
+        //     fullHearts.transform.GetChild(i).gameObject.SetActive(i<currentHp);
+        //     emptyHearts.transform.GetChild(i).gameObject.SetActive(i>=currentHp && i<maxHp);
+        // }
     }
 
     private void GetInputs()
@@ -93,8 +95,24 @@ public class Player2Movement : MonoBehaviour
         if(paused)
             return;
 
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        float moveX = 0;
+        float moveY = 0;
+
+        if (Input.GetKey("u")){
+            moveY = 1;
+        }
+
+        if (Input.GetKey("h")){
+            moveX = -1;
+        }
+
+        if (Input.GetKey("j")){
+            moveY = -1;
+        }
+
+        if (Input.GetKey("k")){
+            moveX = 1;
+        }
 
         moveDirection = new Vector2(moveX, moveY);
 
@@ -130,25 +148,25 @@ public class Player2Movement : MonoBehaviour
         }
 
         if(currentBulletCooldown <= 0){        
-            if(Input.GetKey("right")){
+            if(Input.GetKey(KeyCode.Keypad6)){
                 FireRight();
                 shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
             }else
 
-            if(Input.GetKey("left")){
+            if(Input.GetKey(KeyCode.Keypad4)){
                 FireLeft();
                 shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
             }else
 
-            if(Input.GetKey("down")){
+            if(Input.GetKey(KeyCode.Keypad5)){
                 FireDown();
                 shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
             }else
 
-            if(Input.GetKey("up")){
+            if(Input.GetKey(KeyCode.Keypad8)){
                 FireUp();
                 shootSound.Play();
                 currentBulletCooldown = bulletCooldown;
@@ -164,11 +182,11 @@ public class Player2Movement : MonoBehaviour
         if(!paused){
             Time.timeScale = 0;
             paused = true;
-            pauseText.SetActive(true);
+            // pauseText.SetActive(true);
         }else{
             Time.timeScale = 1;
             paused = false;
-            pauseText.SetActive(false);
+            // pauseText.SetActive(false);
         }
     }
 
@@ -239,12 +257,12 @@ public class Player2Movement : MonoBehaviour
     }
 
     public void TryBuyHealthUp(){
-        if(notes >= itemPrice && maxHp < fullHearts.transform.childCount){
-            itemPickupSound.Play();
-            notes -= itemPrice;
-            HealthUp();
-            // notesText.text = notes.ToString();
-        }
+        // if(notes >= itemPrice && maxHp < fullHearts.transform.childCount){
+        //     itemPickupSound.Play();
+        //     notes -= itemPrice;
+        //     HealthUp();
+        //     // notesText.text = notes.ToString();
+        // }
     }
 
     public void TryBuySpeedUp(){

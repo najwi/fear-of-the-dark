@@ -39,6 +39,7 @@ public class PlayerMovementScript : MonoBehaviour
     public AudioSource shootSound;
     private bool paused;
     public GameObject pauseText;
+    public GameObject player2;
 
     void Start()
     {

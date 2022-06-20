@@ -15,6 +15,15 @@ public class PlayerEntranceChecker : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")){
             cam.Move(destinationView);
+            if (other.gameObject.name == "Player"){
+                GameObject player2 = other.gameObject.GetComponent<PlayerMovementScript>().player2;
+                if (player2 != null){
+                    player2.transform.position = other.gameObject.transform.position;
+                }
+                
+            }else{
+                other.gameObject.GetComponent<Player2Movement>().player.transform.position = other.gameObject.transform.position;
+            }
         }
         if(other.CompareTag("EnemyProjectile")){
             Destroy(other.gameObject);

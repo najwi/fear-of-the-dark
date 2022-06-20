@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 1400543268954661866}
   - component: {fileID: 1400543268954661867}
   - component: {fileID: 1400543268954661876}
-  - component: {fileID: 1400543268954661877}
   - component: {fileID: 1400543268954661864}
   - component: {fileID: 4189651278737580530}
   - component: {fileID: 6690800369901201329}
   - component: {fileID: 5828224742270157870}
   - component: {fileID: 8507937652165584848}
+  - component: {fileID: 7052135994649897990}
   m_Layer: 7
   m_Name: Player2
   m_TagString: Player
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 9eef8fd69f9021c46946edee7fb28fb2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.559924, g: 0.754717, b: 0.5161979, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -140,43 +140,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1400543268954661877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400543268954661878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc0c889547b925745943d7289ea12f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firepoint: {fileID: 1400543269260411712}
-  bulletPrefab: {fileID: 1841263442476223889, guid: 2a1b5bd317d76814d8bf229b3cc3dd22, type: 3}
-  bulletCooldown: 0.5
-  animator: {fileID: 1400543268954661864}
-  maxHp: 4
-  maxHpUp: 1
-  damage: 3
-  damageUp: 1
-  moveSpeed: 5
-  speedUp: 2
-  noDmg: 0
-  notes: 3
-  bombs: 1
-  sprite: {fileID: 1400543268954661866}
-  fullHearts: {fileID: 1704535984374939473, guid: 5bce8fa96eb0d7f46a058e3deae87933, type: 3}
-  emptyHearts: {fileID: 6287847047055270844, guid: 1c0a7a97c7a2ee24badf050b4402a593, type: 3}
-  notesText: {fileID: 0}
-  bombsText: {fileID: 0}
-  speedText: {fileID: 0}
-  damageText: {fileID: 0}
-  bombPrefab: {fileID: 4968037521211024683, guid: f926524fe768fa3438f12b0d9a4b3b2e, type: 3}
-  itemPrice: 10
-  itemPickupSound: {fileID: 5828224742270157870}
-  shootSound: {fileID: 8507937652165584848}
-  pauseText: {fileID: 0}
 --- !u!95 &1400543268954661864
 Animator:
   serializedVersion: 4
@@ -498,6 +461,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7052135994649897990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400543268954661878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d342f985f2342f74cb19fecbf865152f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firepoint: {fileID: 1400543269260411712}
+  bulletPrefab: {fileID: 1841263442476223889, guid: 2a1b5bd317d76814d8bf229b3cc3dd22, type: 3}
+  bulletCooldown: 0.4
+  animator: {fileID: 1400543268954661864}
+  maxHp: 4
+  maxHpUp: 1
+  damage: 3
+  damageUp: 1
+  moveSpeed: 5
+  speedUp: 2
+  noDmg: 0
+  notes: 3
+  bombs: 1
+  sprite: {fileID: 1400543268954661866}
+  bombPrefab: {fileID: 1981276317660607892, guid: cf88bd5611e3d5247809607cdd3459cc, type: 3}
+  itemPrice: 10
+  itemPickupSound: {fileID: 6690800369901201329}
+  shootSound: {fileID: 8507937652165584848}
 --- !u!1 &1400543269260411713
 GameObject:
   m_ObjectHideFlags: 0
