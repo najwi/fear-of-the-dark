@@ -67,10 +67,10 @@ public class Player2Movement : MonoBehaviour
 
     private void UpdateHud(){
         UpdateHearts();
-        damageText.text = damage.ToString();
-        speedText.text = moveSpeed.ToString();
-        bombsText.text = bombs.ToString();
-        notesText.text = notes.ToString();
+        // damageText.text = damage.ToString();
+        // speedText.text = moveSpeed.ToString();
+        // bombsText.text = bombs.ToString();
+        // notesText.text = notes.ToString();
     }
     
     private void UpdateHearts(){
@@ -175,7 +175,7 @@ public class Player2Movement : MonoBehaviour
     private void PlaceBomb(){
         if(bombs > 0){
             bombs--;
-            bombsText.text = bombs.ToString();
+            // bombsText.text = bombs.ToString();
             Instantiate(bombPrefab, firepoint.position, firepoint.rotation);
         }
     }
@@ -234,7 +234,7 @@ public class Player2Movement : MonoBehaviour
             itemPickupSound.Play();
             notes -= itemPrice;
             DamageUp();
-            notesText.text = notes.ToString();
+            // notesText.text = notes.ToString();
         }
     }
 
@@ -243,7 +243,7 @@ public class Player2Movement : MonoBehaviour
             itemPickupSound.Play();
             notes -= itemPrice;
             HealthUp();
-            notesText.text = notes.ToString();
+            // notesText.text = notes.ToString();
         }
     }
 
@@ -252,18 +252,18 @@ public class Player2Movement : MonoBehaviour
             itemPickupSound.Play();
             notes -= itemPrice;
             SpeedUp();
-            notesText.text = notes.ToString();
+            // notesText.text = notes.ToString();
         }
     }
 
     public void DamageUp(){
         damage += damageUp;
-        damageText.text = damage.ToString();
+        // damageText.text = damage.ToString();
     }
 
     public void SpeedUp(){
         moveSpeed += speedUp;
-        speedText.text = moveSpeed.ToString();
+        // speedText.text = moveSpeed.ToString();
     }
 
     public void HealthUp(){
@@ -285,12 +285,12 @@ public class Player2Movement : MonoBehaviour
 
     public void BombPickup(){
         bombs += 1;
-        bombsText.text = bombs.ToString();
+        // bombsText.text = bombs.ToString();
     }
 
     public void NotePickup(){
         notes += 1;
-        notesText.text = notes.ToString();
+        // notesText.text = notes.ToString();
     }
 
     private IEnumerator StrobeColorHelper( int _i, int _stopAt, SpriteRenderer _mySprite, Color _color, Color _toStrobe)
