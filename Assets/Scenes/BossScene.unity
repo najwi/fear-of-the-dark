@@ -13893,7 +13893,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1400543268954661865, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1400543268954661865, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26055,7 +26055,7 @@ Transform:
   - {fileID: 1001520957}
   - {fileID: 996215974}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1450638560
 GameObject:
@@ -37391,6 +37391,14 @@ PrefabInstance:
       propertyPath: bossCamera
       value: 
       objectReference: {fileID: 1251779749}
+    - target: {fileID: 4160056271579279569, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
+      propertyPath: attacksDelayTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160056271579279569, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
+      propertyPath: enemyPortalPrefab
+      value: 
+      objectReference: {fileID: 5945743118816862062, guid: 6630525e919b97444a90f7d3fb8440ab, type: 3}
     - target: {fileID: 4160056271579279569, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
       propertyPath: enemiesPrefabs.Array.size
       value: 2

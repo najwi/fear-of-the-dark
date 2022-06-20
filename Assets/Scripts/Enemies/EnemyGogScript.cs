@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -39,6 +40,14 @@ public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
         anim = gameObject.GetComponent<Animator>();
         // Add delay so all shots are not fired at player at once if multiple enemies are present
         lastAttackTime += Random.Range(0, 5);
+        isNotAttacking = false;
+        StartCoroutine(EnableAttackOnStart());
+    }
+
+    private IEnumerator EnableAttackOnStart()
+    {
+        yield return new WaitForSeconds(1);
+        isNotAttacking = true;
     }
 
     void Update()

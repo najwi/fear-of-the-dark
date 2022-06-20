@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
     public int dmg = 1;
 
-    private const float Lifetime = 10f;  // Time after which bullet is destroyed
+    private const float Lifetime = 7f;  // Time after which bullet is destroyed
 
     void Start()
     {
