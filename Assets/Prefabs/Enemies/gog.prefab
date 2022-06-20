@@ -151,7 +151,7 @@ MonoBehaviour:
   moveSpeed: 1.5
   playerComfortZone: 4
   wallComfortZone: 1.5
-  health: 6
+  health: 20
   attackDamage: 1
   moveDelay: 5
   attackDelay: 2.5

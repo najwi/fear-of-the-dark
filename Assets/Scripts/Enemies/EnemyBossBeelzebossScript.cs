@@ -11,7 +11,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     public GameObject fireball;
     public GameObject[] enemiesPrefabs;
     public BossHealthBarScript healthBar;
-    public int health = 300;
+    public int health = 500;
     public float attacksDelayTime = 3;
     public int fireballsCount = 10;
     public int fireballAttackDamage = 2;
@@ -139,12 +139,13 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         for (int i = 0; i < enemiesCount; i++)
         {
             GameObject enemy = enemiesPrefabs[Random.Range(0, enemiesPrefabs.Length)];
-            SpawnEnemy(enemy, i);
+            StartCoroutine(SpawnEnemy(enemy, i));
         }
     }
 
-    private void SpawnEnemy(GameObject enemy, int index)
+    private IEnumerator SpawnEnemy(GameObject enemy, int index)
     {
+        yield return new WaitForSeconds(3);
         Debug.Log("Spawning enemy: " + enemy.name);
         enemiesAlive[index] = Instantiate(enemy);
     }
