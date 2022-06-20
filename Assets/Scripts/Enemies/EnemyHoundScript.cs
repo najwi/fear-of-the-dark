@@ -12,7 +12,7 @@ public class EnemyHoundScript : MonoBehaviour, TakeBombDamageDecorator
     public float moveSpeed = 2f;
     public float dodgeSpeed = 10;
     public float dodgeTime = 0.10f;
-    public int health = 3;
+    public int health = 8;
     public int attackDamage = 1;
     public float attackRange = 1.8f;
     public float attackEscapeRange = 2.8f;

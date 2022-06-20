@@ -17,7 +17,7 @@ public class PlayerMovementScript : MonoBehaviour
     public int maxHp = 4;
     public int maxHpUp = 1;
     private int currentHp;
-    public int damage = 1;
+    public int damage = 3;
     public int damageUp = 1;
     public float moveSpeed = 5f;
     public float speedUp = 2f;

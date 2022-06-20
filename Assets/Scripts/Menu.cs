@@ -46,7 +46,7 @@ public class Menu : MonoBehaviour
             UpdateMenu();
         }
 
-        if(Input.GetKeyDown("space") || Input.GetKeyDown("enter")){
+        if(Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)){
             switch(option){
                 case 0: 
                     SceneManager.LoadScene("Game"); 

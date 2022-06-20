@@ -158,7 +158,7 @@ MonoBehaviour:
   animator: {fileID: 1400543268954661864}
   maxHp: 4
   maxHpUp: 1
-  damage: 1
+  damage: 3
   damageUp: 1
   moveSpeed: 5
   speedUp: 2
@@ -176,6 +176,7 @@ MonoBehaviour:
   itemPrice: 10
   itemPickupSound: {fileID: 5828224742270157870}
   shootSound: {fileID: 8507937652165584848}
+  pauseText: {fileID: 0}
 --- !u!95 &1400543268954661864
 Animator:
   serializedVersion: 4

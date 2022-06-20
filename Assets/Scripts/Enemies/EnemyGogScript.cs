@@ -10,7 +10,7 @@ public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
     public float moveSpeed = 1.5f;
     public float playerComfortZone = 4f;
     public float wallComfortZone = 0.5f;
-    public int health = 6;
+    public int health = 20;
     public int attackDamage = 1;
     public float moveDelay = 5f;
     public float attackDelay = 2.5f;
