@@ -38,6 +38,7 @@ public class PlayerMovementScript : MonoBehaviour
     public AudioSource itemPickupSound;
     public AudioSource shootSound;
     private bool paused;
+    public GameObject pauseText;
 
     void Start()
     {
@@ -88,7 +89,7 @@ public class PlayerMovementScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)){
             Pause();
         }
-        
+
         if(paused)
             return;
 
@@ -163,9 +164,11 @@ public class PlayerMovementScript : MonoBehaviour
         if(!paused){
             Time.timeScale = 0;
             paused = true;
+            pauseText.SetActive(true);
         }else{
             Time.timeScale = 1;
             paused = false;
+            pauseText.SetActive(false);
         }
     }
 
