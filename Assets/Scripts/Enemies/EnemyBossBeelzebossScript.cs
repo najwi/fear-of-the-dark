@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
@@ -8,9 +9,10 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     public GameObject leftHand;
     public GameObject rightHand;
     public GameObject fireball;
+    public GameObject[] enemiesPrefabs;
     public BossHealthBarScript healthBar;
     public int health = 300;
-    public float attacksDelayTime = 5;
+    public float attacksDelayTime = 3;
     public int fireballsCount = 10;
     public int fireballAttackDamage = 2;
     public float fireballSpread = 2.5f;
@@ -24,7 +26,11 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     private SpriteRenderer handRSprite;
 
     private bool canAttack = false;
+    private bool spawned = false;
+    private bool invulnerable = false;
     private GameObject[] fireballs;
+    private GameObject[] enemiesAlive;
+
     #endregion variables
 
     private void Start()
@@ -46,6 +52,10 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         if (canAttack)
         {
             DoRandomAttack();
+        }
+        else
+        {
+            CheckIfAllSpawnedAreDead();
         }
     }
 
@@ -110,7 +120,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         if (last)
         {
             anim.SetTrigger("idle");
-            StartCoroutine(PauseBetweenAttacks(attacksDelayTime));
+            StartCoroutine(PauseBetweenAttacks(3));
         }
     }
     #endregion ThrowFireballs
@@ -118,7 +128,48 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     #region SpawnEnemies
     private void SpawnEnemies()
     {
+        int enemiesCount = 4;
 
+        anim.SetTrigger("spawn");
+        bossCamera.GetComponent<BossCameraController>().SetCameraYOffset(1);
+        canAttack = false;
+        spawned = true;
+        invulnerable = true;
+        enemiesAlive = new GameObject[enemiesCount];
+        for (int i = 0; i < enemiesCount; i++)
+        {
+            GameObject enemy = enemiesPrefabs[Random.Range(0, enemiesPrefabs.Length)];
+            SpawnEnemy(enemy, i);
+        }
+    }
+
+    private void SpawnEnemy(GameObject enemy, int index)
+    {
+        Debug.Log("Spawning enemy: " + enemy.name);
+        enemiesAlive[index] = Instantiate(enemy);
+    }
+
+    private bool AreAllSpawnedDead()
+    {
+        int alive = 0;
+        for (int i = 0; i < enemiesAlive.Length; i++)
+        {
+            if (enemiesAlive[i])
+                alive += 1;
+        }
+        return alive == 0;
+    }
+
+    private void CheckIfAllSpawnedAreDead()
+    {
+        if (!spawned || !AreAllSpawnedDead())
+            return;
+        Debug.Log("Spawned are dead");
+        spawned = false;
+        invulnerable = false;
+        anim.SetTrigger("idle");
+        bossCamera.GetComponent<BossCameraController>().ResetCameraOffset();
+        StartCoroutine(PauseBetweenAttacks(attacksDelayTime));
     }
     #endregion SpawnEnemies
     #endregion attacks
@@ -134,6 +185,8 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
 
     public void TakeDamage(int damage)
     {
+        if (invulnerable)
+            return;
         health -= damage;
         if (health <= 0)
         {
@@ -149,6 +202,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         }
         healthBar.SetBossCurrentHealth(health);
     }
+
     public bool TakeBombDamage(int damage)
     {
         TakeDamage(damage);
@@ -163,6 +217,11 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         {
             if (ball)
                 Destroy(ball);
+        }
+        foreach(var enemy in enemiesAlive)
+        {
+            if (enemy)
+                Destroy(enemy);
         }
     }
     #endregion takingDamage

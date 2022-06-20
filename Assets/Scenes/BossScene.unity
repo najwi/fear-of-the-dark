@@ -13937,7 +13937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
       propertyPath: damage
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
       propertyPath: bombsText
@@ -37303,6 +37303,18 @@ PrefabInstance:
       propertyPath: bossCamera
       value: 
       objectReference: {fileID: 1251779749}
+    - target: {fileID: 4160056271579279569, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
+      propertyPath: enemiesPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4160056271579279569, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
+      propertyPath: enemiesPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2078856817389342288, guid: 5430cad775251ed438ff49c8ebc245db, type: 3}
+    - target: {fileID: 4160056271579279569, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
+      propertyPath: enemiesPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3598319866654534786, guid: 242f7cdff4df61442823de6c87d1f09d, type: 3}
     m_RemovedComponents:
     - {fileID: 1722068194372674649, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a30e1b63bbb48d24ea4fd8f879d31159, type: 3}
@@ -37327,7 +37339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908863262808433463, guid: 57004c8505fd4934d99ff59920b64bfd, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4908863262808433464, guid: 57004c8505fd4934d99ff59920b64bfd, type: 3}
       propertyPath: m_RootOrder

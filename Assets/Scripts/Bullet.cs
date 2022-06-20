@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.right * speed;
-        DeleteAfterLifetime(Lifetime);
+        StartCoroutine(DeleteAfterLifetime(Lifetime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -25,5 +25,4 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
     }
-
 }

@@ -214,6 +214,7 @@ public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
         { 
             anim.SetTrigger("die");
             isDead = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
             anim.SetTrigger("hit");
