@@ -17,6 +17,8 @@ public class RoomGenerator : MonoBehaviour
     public bool rightDoor;
     public bool leftDoor;
     public bool bottomDoor;
+
+    public static bool finished = false;
     
     public GameObject[] spawnPoints;
     private RoomTemplates templates;
@@ -30,15 +32,18 @@ public class RoomGenerator : MonoBehaviour
     public GameObject rightSpawnPoint;
     public GameObject bottomSpawnPoint;
     public GameObject leftSpawnPoint;
+    private RoomDesigner roomDesigner;
 
     private int rand;
 
     public List<GameObject> adjacentRooms = new List<GameObject>();
+    public GameObject generatedFrom;
     public static GameObject bossRoom;
 
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        roomDesigner = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RoomDesigner>();
 
         switch (roomType){
             case 1:
@@ -90,12 +95,17 @@ public class RoomGenerator : MonoBehaviour
         CustomizeRoom();
 
         if (roomsSpawned < maxRoomQuantity){
-            Invoke("SpawnRoom", 0.3f);
+            Invoke("SpawnRoom", 0.4f);
         }
         else{
             Invoke("SpawnClosedRoom", 0.1f);
+            finished = true;
         }
     }
+
+    // void FindBossRoom(){
+    //     roomDesigner.Begin();
+    // }
 
     void SpawnRoom(){
         for (int i=0; i < 4; i++){
@@ -105,6 +115,7 @@ public class RoomGenerator : MonoBehaviour
                         rand = Random.Range(0, templates.topRooms.Length);
                         GameObject topRoom = Instantiate(templates.topRooms[rand], topSpawnPoint.transform.position, Quaternion.identity);
                         topRoom.GetComponent<RoomGenerator>().roomType = 3;
+                        topRoom.GetComponent<RoomGenerator>().generatedFrom = gameObject;
                         adjacentRooms.Add(topRoom);
                         // Instantiate(templates.topRooms[rand], topSpawnPoint.transform.position, Quaternion.identity);
                         Destroy(topSpawnPoint);
@@ -117,6 +128,7 @@ public class RoomGenerator : MonoBehaviour
                         rand = Random.Range(0, templates.rightRooms.Length);
                         GameObject rightRoom = Instantiate(templates.rightRooms[rand], rightSpawnPoint.transform.position, Quaternion.identity);
                         rightRoom.GetComponent<RoomGenerator>().roomType = 4;
+                        rightRoom.GetComponent<RoomGenerator>().generatedFrom = gameObject;
                         adjacentRooms.Add(rightRoom);
                         Destroy(rightSpawnPoint);
                         roomsSpawned++;
@@ -129,6 +141,7 @@ public class RoomGenerator : MonoBehaviour
                         rand = Random.Range(0, templates.bottomRooms.Length);
                         GameObject bottomRoom = Instantiate(templates.bottomRooms[rand], bottomSpawnPoint.transform.position, Quaternion.identity);
                         bottomRoom.GetComponent<RoomGenerator>().roomType = 1;
+                        bottomRoom.GetComponent<RoomGenerator>().generatedFrom = gameObject;
                         adjacentRooms.Add(bottomRoom);
                         Destroy(bottomSpawnPoint);
                         roomsSpawned++;
@@ -141,6 +154,7 @@ public class RoomGenerator : MonoBehaviour
                         rand = Random.Range(0, templates.leftRooms.Length);
                         GameObject leftRoom = Instantiate(templates.leftRooms[rand], leftSpawnPoint.transform.position, Quaternion.identity);
                         leftRoom.GetComponent<RoomGenerator>().roomType = 2;
+                        leftRoom.GetComponent<RoomGenerator>().generatedFrom = gameObject;
                         adjacentRooms.Add(leftRoom);
                         Destroy(leftSpawnPoint);
                         roomsSpawned++;
@@ -233,9 +247,9 @@ public class RoomGenerator : MonoBehaviour
                 wallChildSpriteRenderer.sprite = templates.shopWallSprites[random];
             }
         }
-        int r = Random.Range(0, templates.obstacleTemplates.Length);
-        if (gameObject.name != "Opened" && gameObject.name != "Shop"){
-            Instantiate(templates.obstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
-        }
+        // int r = Random.Range(0, templates.easyObstacleTemplates.Length);
+        // if (gameObject.name != "Opened" && gameObject.name != "Shop"){
+        //     Instantiate(templates.easyObstacleTemplates[r], transform.position, Quaternion.identity).transform.parent = gameObject.transform;
+        // }
     }
 }

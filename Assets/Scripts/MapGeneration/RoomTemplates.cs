@@ -19,10 +19,18 @@ public class RoomTemplates : MonoBehaviour
 
     public Sprite[] floorSprites;
     public Sprite[] wallSprites;
+    public Sprite[] mediumFloorSprites;
+    public Sprite[] mediumWallSprites;
+    public Sprite[] hardFloorSprites;
+    public Sprite[] hardWallSprites;
     public Sprite[] bossFloorSprites;
     public Sprite[] bossWallSprites;
 
     public GameObject[] obstacleTemplates;
+
+    public GameObject[] easyObstacleTemplates;
+    public GameObject[] mediumObstacleTemplates;
+    public GameObject[] hardObstacleTemplates;
 
     public Sprite closedDoor;
     public Sprite openedDoor;
