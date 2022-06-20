@@ -38,6 +38,13 @@ public class EnemyHoundScript : MonoBehaviour, TakeBombDamageDecorator
         rb = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
+        StartCoroutine(EnableAttackOnStart());
+    }
+
+    private IEnumerator EnableAttackOnStart()
+    {
+        yield return new WaitForSeconds(1);
+        isNotAttacking = true;
     }
 
     void Update()

@@ -22,7 +22,9 @@ public class Menu : MonoBehaviour
         Cursor.visible = false;
 
         UpdateMenu();
-        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().PlayMusic();
+        var music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
+        if (music)
+            music.PlayMusic();
     }
 
     void Update()
