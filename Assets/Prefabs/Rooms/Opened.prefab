@@ -2516,6 +2516,7 @@ MonoBehaviour:
   bottomSpawnPoint: {fileID: 1916614753338303563}
   leftSpawnPoint: {fileID: 1916614754469948631}
   adjacentRooms: []
+  generatedFrom: {fileID: 0}
 --- !u!61 &591693504362089085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23463,10 +23464,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1916614752982617377}
     m_Modifications:
+    - target: {fileID: 2904140818258395089, guid: c04ff4edca8b0e845889915b43d36421, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3999121118261077412, guid: c04ff4edca8b0e845889915b43d36421, type: 3}
       propertyPath: m_Name
       value: LeftDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 4804852434907238458, guid: c04ff4edca8b0e845889915b43d36421, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e02f1d523ed7a314ba07f05aa7cbafdf, type: 3}
     - target: {fileID: 6787208405094385793, guid: c04ff4edca8b0e845889915b43d36421, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -23525,6 +23534,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1916614752982617377}
     m_Modifications:
+    - target: {fileID: 1093969320408527367, guid: 7b1dc4f44e8bb0842b4ae75164f21cfc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e02f1d523ed7a314ba07f05aa7cbafdf, type: 3}
     - target: {fileID: 1419142464811526844, guid: 7b1dc4f44e8bb0842b4ae75164f21cfc, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -23569,6 +23582,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 630
       objectReference: {fileID: 0}
+    - target: {fileID: 7335616365278125548, guid: 7b1dc4f44e8bb0842b4ae75164f21cfc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8862934396001830809, guid: 7b1dc4f44e8bb0842b4ae75164f21cfc, type: 3}
       propertyPath: m_Name
       value: RightDoor
@@ -23587,6 +23604,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1916614752982617377}
     m_Modifications:
+    - target: {fileID: 974142673045963120, guid: cec7ce50fca41654799a39950711b868, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e02f1d523ed7a314ba07f05aa7cbafdf, type: 3}
     - target: {fileID: 1232746431397697995, guid: cec7ce50fca41654799a39950711b868, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -23631,6 +23652,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 360
       objectReference: {fileID: 0}
+    - target: {fileID: 7450940478736150171, guid: cec7ce50fca41654799a39950711b868, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8670873167009658094, guid: cec7ce50fca41654799a39950711b868, type: 3}
       propertyPath: m_Name
       value: TopDoor
@@ -23652,6 +23677,10 @@ PrefabInstance:
     - target: {fileID: 2644659072290493072, guid: 0eff7bacd89ff0d478cc7915a6af9a07, type: 3}
       propertyPath: m_Name
       value: BottomDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287876261815355621, guid: 0eff7bacd89ff0d478cc7915a6af9a07, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5619663335846264757, guid: 0eff7bacd89ff0d478cc7915a6af9a07, type: 3}
       propertyPath: m_RootOrder
@@ -23697,6 +23726,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 5864337381385332494, guid: 0eff7bacd89ff0d478cc7915a6af9a07, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e02f1d523ed7a314ba07f05aa7cbafdf, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0eff7bacd89ff0d478cc7915a6af9a07, type: 3}
 --- !u!4 &2546579812969317154 stripped
