@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -311,10 +311,12 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         while (fireballs.Count > 0)
         {
             var ball = fireballs[0];
-            ball.SetActive(false);
             fireballs.RemoveAt(0);
             if (ball)
+            {
+                ball.SetActive(false);
                 Destroy(ball);
+            }
         }
         foreach(var enemy in enemiesAlive)
         {
