@@ -17,9 +17,13 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        //Disable cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
+        if (SystemInfo.deviceType != DeviceType.Handheld)
+        {
+            //Disable cursor
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         UpdateMenu();
         var music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
