@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class RoomSpawner : MonoBehaviour
 {
     private RoomTemplates templates;
-    private bool spawned = false;
     private GameObject parRoom;
 
     void Start()
@@ -35,34 +35,6 @@ public class RoomSpawner : MonoBehaviour
             GameObject parentGeneratedFrom = parentRoom.GetComponent<RoomGenerator>().generatedFrom;
             GameObject otherGeneratedFrom = otherRoom.GetComponent<RoomGenerator>().generatedFrom;
 
-            if(parentGeneratedFrom == otherGeneratedFrom){
-                switch (roomType){
-                case 1:
-                    parentGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.topClosedRoom, parentPosition.position, Quaternion.identity));
-                    break;
-                case 2:
-                    parentGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.rightClosedRoom, parentPosition.position, Quaternion.identity));
-                    break;
-                case 3:
-                    parentGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.bottomClosedRoom, parentPosition.position, Quaternion.identity));
-                    break;
-                case 4:
-                    parentGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.leftClosedRoom, parentPosition.position, Quaternion.identity));
-                    break;
-                case 0:
-                    Debug.Log("From opened");
-                    break;
-                default:
-                    Debug.Log("er");
-                    break;
-                }
-                Destroy(gameObject);
-                Destroy(other.gameObject);
-                Destroy(otherRoom);
-                Destroy(parentRoom);
-                return;
-            }
-
             Destroy(gameObject);
             Destroy(other.gameObject);
             Destroy(otherRoom);
@@ -80,22 +52,6 @@ public class RoomSpawner : MonoBehaviour
                     break;
                 case 4:
                     parentGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.leftClosedRoom, parentPosition.position, Quaternion.identity));
-                    break;
-                default:
-                    break;
-            }
-            switch (otherRoomType){
-                case 1:
-                    otherGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.topClosedRoom, otherPosition.position, Quaternion.identity));
-                    break;
-                case 2:
-                    otherGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.rightClosedRoom, otherPosition.position, Quaternion.identity));
-                    break;
-                case 3:
-                    otherGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.bottomClosedRoom, otherPosition.position, Quaternion.identity));
-                    break;
-                case 4:
-                    otherGeneratedFrom.GetComponent<RoomGenerator>().adjacentRooms.Add(Instantiate(templates.leftClosedRoom, otherPosition.position, Quaternion.identity));
                     break;
                 default:
                     break;

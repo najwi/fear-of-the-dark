@@ -41,6 +41,9 @@ public class PlayerMovementScript : MonoBehaviour
     public GameObject pauseText;
     public GameObject player2;
 
+    public Joystick movementJoystick;
+    public Joystick attackJoystick;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
@@ -94,8 +97,16 @@ public class PlayerMovementScript : MonoBehaviour
         if(paused)
             return;
 
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        float moveX = 0.0f;
+        float moveY = 0.0f;
+
+        if (movementJoystick.gameObject.activeSelf){
+            moveX = movementJoystick.Horizontal;
+            moveY = movementJoystick.Vertical;
+        }else{
+            moveX = Input.GetAxisRaw("Horizontal");
+            moveY = Input.GetAxisRaw("Vertical");;
+        }
 
         moveDirection = new Vector2(moveX, moveY);
 
@@ -130,30 +141,62 @@ public class PlayerMovementScript : MonoBehaviour
             animator.SetBool("RunBack", false);
         }
 
-        if(currentBulletCooldown <= 0){        
-            if(Input.GetKey("right")){
-                FireRight();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }else
+        float attackX = 0.0f;
+        float attackY = 0.0f;
 
-            if(Input.GetKey("left")){
-                FireLeft();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }else
+        if(currentBulletCooldown <= 0){     
+            if (movementJoystick.gameObject.activeSelf){
+                attackX = attackJoystick.Horizontal;
+                attackY = attackJoystick.Vertical;
+                if(attackX > 0){
+                    FireRight();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
 
-            if(Input.GetKey("down")){
-                FireDown();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }else
+                if(attackX < 0){
+                    FireLeft();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
 
-            if(Input.GetKey("up")){
-                FireUp();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }
+                if(attackY < 0){
+                    FireDown();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(attackY > 0){
+                    FireUp();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }
+            }else{
+                if(Input.GetKey("right")){
+                    FireRight();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(Input.GetKey("left")){
+                    FireLeft();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(Input.GetKey("down")){
+                    FireDown();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(Input.GetKey("up")){
+                    FireUp();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }
+            }   
+            
         }
 
         if(Input.GetKeyDown("e")){

@@ -17,9 +17,11 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        //Disable cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (SystemInfo.deviceType != DeviceType.Handheld){
+            //Disable cursor
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         UpdateMenu();
         var music = GameObject.FindGameObjectWithTag("Music").GetComponent<Music>();
@@ -51,8 +53,7 @@ public class Menu : MonoBehaviour
         if(Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)){
             switch(option){
                 case 0: 
-                    SceneManager.LoadScene("Game"); 
-                    GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().StopMusic(); 
+                    StartGame();
                     break;
                 case 1: SceneManager.LoadScene("SettingsScene"); break;
                 case 2: Application.Quit(); break;
@@ -64,5 +65,10 @@ public class Menu : MonoBehaviour
     void UpdateMenu(){
         for(int i = 0; i<texts.Count; i++)
             texts[i].color = i==option ? selectedOptionColor : defaultOptionColor;
+    }
+
+    public void StartGame(){
+        SceneManager.LoadScene("Game"); 
+        GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().StopMusic(); 
     }
 }
