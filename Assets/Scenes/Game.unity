@@ -1215,7 +1215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: obstacleTemplates.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: HardWallSprites.Array.data[0]
@@ -1319,11 +1319,11 @@ PrefabInstance:
       objectReference: {fileID: 159674770790767964, guid: 9fee78faf4aad9b4e8e970308742fe73, type: 3}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: easyObstacleTemplates.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: hardObstacleTemplates.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: mediumFloorSprites.Array.data[0]
@@ -1340,7 +1340,7 @@ PrefabInstance:
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: obstacleTemplates.Array.data[10]
       value: 
-      objectReference: {fileID: 159674770790767964, guid: 9fee78faf4aad9b4e8e970308742fe73, type: 3}
+      objectReference: {fileID: 6627180250647693526, guid: 741e9e05c7488f94b9ea0668582689e7, type: 3}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: obstacleTemplates.Array.data[11]
       value: 
@@ -1355,7 +1355,7 @@ PrefabInstance:
       objectReference: {fileID: 159674770790767964, guid: 9fee78faf4aad9b4e8e970308742fe73, type: 3}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: mediumObstacleTemplates.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: easyObstacleTemplates.Array.data[0]
@@ -1390,6 +1390,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6627180250647693526, guid: a4d01fbd0978c334fa4071cdc44fd65f, type: 3}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
+      propertyPath: easyObstacleTemplates.Array.data[8]
+      value: 
+      objectReference: {fileID: 6627180250647693526, guid: 741e9e05c7488f94b9ea0668582689e7, type: 3}
+    - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
+      propertyPath: easyObstacleTemplates.Array.data[9]
+      value: 
+      objectReference: {fileID: 6627180250647693526, guid: 741e9e05c7488f94b9ea0668582689e7, type: 3}
+    - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: hardObstacleTemplates.Array.data[0]
       value: 
       objectReference: {fileID: 159674770790767964, guid: 60de42a908941354696ed54feb26b566, type: 3}
@@ -1398,6 +1406,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 159674770790767964, guid: e90ce0f994b077d4a9a8877b942150ca, type: 3}
     - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
+      propertyPath: hardObstacleTemplates.Array.data[2]
+      value: 
+      objectReference: {fileID: 6627180250647693526, guid: 2041fb0a1e464f440a644b3708206768, type: 3}
+    - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
+      propertyPath: hardObstacleTemplates.Array.data[3]
+      value: 
+      objectReference: {fileID: 6627180250647693526, guid: 2041fb0a1e464f440a644b3708206768, type: 3}
+    - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: mediumObstacleTemplates.Array.data[0]
       value: 
       objectReference: {fileID: 159674770790767964, guid: 9fee78faf4aad9b4e8e970308742fe73, type: 3}
@@ -1405,6 +1421,14 @@ PrefabInstance:
       propertyPath: mediumObstacleTemplates.Array.data[1]
       value: 
       objectReference: {fileID: 159674770790767964, guid: 9305b7574d541d245a2bc5e7637adb44, type: 3}
+    - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
+      propertyPath: mediumObstacleTemplates.Array.data[2]
+      value: 
+      objectReference: {fileID: 6627180250647693526, guid: 313f0e2f78f9ea5458d636d16c4ecb98, type: 3}
+    - target: {fileID: 5748331677407850090, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
+      propertyPath: mediumObstacleTemplates.Array.data[3]
+      value: 
+      objectReference: {fileID: 6627180250647693526, guid: 313f0e2f78f9ea5458d636d16c4ecb98, type: 3}
     - target: {fileID: 5748331677407850091, guid: 9deb48ae5fb76ac48ac4cdd75679908c, type: 3}
       propertyPath: m_Name
       value: RoomTemplates
