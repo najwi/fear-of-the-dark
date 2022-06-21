@@ -26,7 +26,7 @@ public class RoomGenerator : MonoBehaviour
 
     public static int minRoomQuantity = 10;
     public static int maxRoomQuantity = 40;
-    private static int roomsSpawned = 0;
+    public static int roomsSpawned = 0;
 
     public GameObject topSpawnPoint;
     public GameObject rightSpawnPoint;
