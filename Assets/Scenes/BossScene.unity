@@ -965,6 +965,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &67401645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3928238258391458986, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+  m_PrefabInstance: {fileID: 998105694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &73041736
 GameObject:
   m_ObjectHideFlags: 0
@@ -13967,6 +13978,14 @@ PrefabInstance:
       propertyPath: emptyHearts
       value: 
       objectReference: {fileID: 775215395}
+    - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
+      propertyPath: attackJoystick
+      value: 
+      objectReference: {fileID: 67401645}
+    - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
+      propertyPath: movementJoystick
+      value: 
+      objectReference: {fileID: 2082147133}
     - target: {fileID: 1400543268954661878, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
       propertyPath: m_Name
       value: Player
@@ -36298,6 +36317,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2082147133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4401302895253299418, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+  m_PrefabInstance: {fileID: 998105694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2087333872
 GameObject:
   m_ObjectHideFlags: 0

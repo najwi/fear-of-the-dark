@@ -13,6 +13,6 @@ public class JoysticksManager : MonoBehaviour
         {
             movementJoystick.gameObject.SetActive(true);
             attackJoystick.gameObject.SetActive(true);
-        }   
+        }
     }
 }

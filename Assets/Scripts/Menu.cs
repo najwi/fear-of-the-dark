@@ -56,7 +56,7 @@ public class Menu : MonoBehaviour
                     StartGame();
                     break;
                 case 1: SceneManager.LoadScene("SettingsScene"); break;
-                case 2: Application.Quit(); break;
+                case 2: ExitGame(); break;
             }
             
         }
@@ -70,5 +70,9 @@ public class Menu : MonoBehaviour
     public void StartGame(){
         SceneManager.LoadScene("Game"); 
         GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().StopMusic(); 
+    }
+
+    public void ExitGame(){
+        Application.Quit();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementScript : MonoBehaviour
@@ -148,6 +149,11 @@ public class PlayerMovementScript : MonoBehaviour
             if (movementJoystick.gameObject.activeSelf){
                 attackX = attackJoystick.Horizontal;
                 attackY = attackJoystick.Vertical;
+                if (Math.Abs(attackX) > Math.Abs(attackY)){
+                    attackY = 0.0f;
+                }else{
+                    attackX = 0.0f;
+                }
                 if(attackX > 0){
                     FireRight();
                     shootSound.Play();
