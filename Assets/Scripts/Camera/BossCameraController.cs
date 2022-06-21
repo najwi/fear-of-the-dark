@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BossCameraController : MonoBehaviour
@@ -100,5 +101,16 @@ public class BossCameraController : MonoBehaviour
     public void SetCinematicPosX(float newX)
     {
         cinematicPosX = newX;
+    }
+
+    public void BossDied()
+    {
+        StartCoroutine(CameraToPlayer(5));
+    }
+
+    private IEnumerator CameraToPlayer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SetCameraYOffset(0);
     }
 }
