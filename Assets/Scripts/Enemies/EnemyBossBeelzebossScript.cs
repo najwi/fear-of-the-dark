@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,6 +46,8 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     private void Start()
     {
         player = GameObject.Find("Player");
+        if (PlayerMovementScript.multiplayer)
+            health = (int)(health * 1.3);
         playerScript = player.GetComponent<PlayerMovementScript>();
         anim = gameObject.GetComponent<Animator>();
         headSprite = gameObject.GetComponent<SpriteRenderer>();
@@ -311,10 +313,12 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         while (fireballs.Count > 0)
         {
             var ball = fireballs[0];
-            ball.SetActive(false);
             fireballs.RemoveAt(0);
             if (ball)
+            {
+                ball.SetActive(false);
                 Destroy(ball);
+            }
         }
         foreach(var enemy in enemiesAlive)
         {
