@@ -15,16 +15,16 @@ public class PlayerMovementScript : MonoBehaviour
     public float bulletCooldown = 0.4f;
     private float currentBulletCooldown = 0f;
     public Animator animator;
-    public static int maxHp = 4;
+    public static int maxHp;
     public int maxHpUp = 1;
-    private static int currentHp;
-    public static int damage = 3;
+    public static int currentHp;
+    public static int damage;
     public int damageUp = 1;
-    public static float moveSpeed = 5f;
+    public static float moveSpeed;
     public float speedUp = 2f;
     public bool noDmg = false;
-    public static int notes = 3;
-    public static int bombs = 1;
+    public static int notes;
+    public static int bombs;
     public SpriteRenderer sprite;
     private bool alive = true;
     private int guiHeartsCount;
@@ -44,14 +44,15 @@ public class PlayerMovementScript : MonoBehaviour
 
     public Joystick movementJoystick;
     public Joystick attackJoystick;
+    public static bool multiplayer;    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
-        currentHp = maxHp;
         UpdateHud();
         AudioListener.volume = PlayerPrefs.GetFloat("volume", 0.5f);
         paused = false;
+        player2.SetActive(multiplayer);
     }
 
     private void Update()
