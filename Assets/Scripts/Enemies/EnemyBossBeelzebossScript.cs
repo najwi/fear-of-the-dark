@@ -46,6 +46,8 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     private void Start()
     {
         player = GameObject.Find("Player");
+        if (PlayerMovementScript.multiplayer)
+            health = (int)(health * 1.3);
         playerScript = player.GetComponent<PlayerMovementScript>();
         anim = gameObject.GetComponent<Animator>();
         headSprite = gameObject.GetComponent<SpriteRenderer>();
