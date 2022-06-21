@@ -38,12 +38,13 @@ public class EnemyHoundScript : MonoBehaviour, TakeBombDamageDecorator
         rb = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
+        isNotAttacking = false;
         StartCoroutine(EnableAttackOnStart());
     }
 
     private IEnumerator EnableAttackOnStart()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         isNotAttacking = true;
     }
 
@@ -124,6 +125,7 @@ public class EnemyHoundScript : MonoBehaviour, TakeBombDamageDecorator
         float distance = Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y);
         return distance < attackEscapeRange;
     }
+
     private void FinalizeAttack()
     {
         Vector2 direction = player.transform.position - transform.position;

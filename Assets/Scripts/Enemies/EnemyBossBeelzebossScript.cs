@@ -12,6 +12,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     public GameObject[] enemiesPrefabs;
     public GameObject enemyPortalPrefab;
     public BossHealthBarScript healthBar;
+    public GameObject[] lavaToDelete;
     public int health = 500;
     public float attacksDelayTime = 3;
     public int fireballsCount = 10;
@@ -29,13 +30,16 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
 
     private bool canAttack = false;
     private bool spawned = false;
-    private bool invulnerable = false;
+    // private bool invulnerable = false;
+    private int damageTakenDivider = 1;
     private int currentHealth;
-    private bool previouslySpawned = true;
+    private bool recentlySpawned = true;
     private bool enteredPhaseTwo = false;
     private bool enteredPhaseThree = false;
     private List<GameObject> fireballs;
+    private GameObject enemiesContainer;
     private GameObject[] enemiesAlive;
+    private int fireballsInRow = 0;
 
     #endregion variables
 
@@ -47,8 +51,10 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         headSprite = gameObject.GetComponent<SpriteRenderer>();
         handLSprite = leftHand.GetComponent<SpriteRenderer>();
         handRSprite = rightHand.GetComponent<SpriteRenderer>();
+        enemiesAlive = new GameObject[enemiesCount];
         fireballs = new List<GameObject>();
         currentHealth = health;
+        enemiesContainer = new GameObject("enemies");
 
         healthBar.SetBossName("Beelzeboss");
         healthBar.SetBossMaxHealth(health);
@@ -77,16 +83,19 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     {
         float rand = Random.Range(0.0f, 1.0f);
         // 80% chance of fireballs
-        if (rand < 0.8f)
+        if (rand < 0.8f && fireballsInRow < 5)
         {
             ThrowFireballs();
-            previouslySpawned = false;
+            fireballsInRow += 1;
+            if (fireballsInRow > 2)  // Wait two attacks before spawning again
+                recentlySpawned = false;
         }
         // 20% chance of spawning new enemies
-        else if (!previouslySpawned)
+        else if (!recentlySpawned)
         {
+            fireballsInRow = 0;
             SpawnEnemies();
-            previouslySpawned = true;
+            recentlySpawned = true;
         }
     }
     #region ThrowFireballs
@@ -142,12 +151,19 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         anim.SetTrigger("spawn");
         bossCamera.GetComponent<BossCameraController>().SetCameraYOffset(1);
         canAttack = false;
-        invulnerable = true;
+        damageTakenDivider = 4;
         enemiesAlive = new GameObject[enemiesCount];
         GameObject[] portals = PlacePortals(enemiesCount);
         for (int i = 0; i < enemiesCount; i++)
         {
-            GameObject enemy = enemiesPrefabs[Random.Range(0, enemiesPrefabs.Length)];
+            int enemyIndex = Random.Range(0, 10);
+            if (enemyIndex < 3)
+                enemyIndex = 0;  // 20% hound
+            else if (enemyIndex < 9)
+                enemyIndex = 1;  // 70% gog
+            else
+                enemyIndex = 2;  // 10% skeleton
+            GameObject enemy = enemiesPrefabs[enemyIndex];
             StartCoroutine(SpawnEnemy(enemy, i, i == enemiesCount - 1, portals[i]));
         }
     }
@@ -182,7 +198,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     {
         yield return new WaitForSeconds(2);
         portal.SetActive(false);
-        enemiesAlive[index] = Instantiate(enemy);
+        enemiesAlive[index] = Instantiate(enemy, enemiesContainer.transform);
         enemiesAlive[index].transform.position = portal.transform.position;
         Destroy(portal);
         if (last)
@@ -211,7 +227,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         if (!spawned || !AreAllSpawnedDead())
             return;
         spawned = false;
-        invulnerable = false;
+        damageTakenDivider = 1;
         anim.SetTrigger("idle");
         bossCamera.GetComponent<BossCameraController>().ResetCameraOffset();
         StartCoroutine(PauseBetweenAttacks(attacksDelayTime));
@@ -228,16 +244,35 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         }
     }
 
+    private int ApplyDamageReduction(int damage)
+    {
+        if (damage == 0)
+            return 0;
+        int damageTaken = damage / damageTakenDivider;
+        if (damageTaken <= 0)
+            damageTaken = 1;
+        return damageTaken;
+    }
+
     public void TakeDamage(int damage)
     {
-        if (invulnerable)
+        if (currentHealth == 0)
             return;
-        currentHealth -= damage;
+        damage *= 50;
+        int damageTaken = ApplyDamageReduction(damage);
+        currentHealth -= damageTaken;
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             anim.SetTrigger("die");
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            leftHand.GetComponent<BoxCollider2D>().enabled = false;
+            rightHand.GetComponent<BoxCollider2D>().enabled = false;
+            foreach(var lava in lavaToDelete)
+                Destroy(lava, 5f);
             StopAttacks();
+            Destroy(healthBar.gameObject, 5f);
+            bossCamera.GetComponent<BossCameraController>().BossDied();
         }
         else
         {
@@ -277,6 +312,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         while (fireballs.Count > 0)
         {
             var ball = fireballs[0];
+            ball.SetActive(false);
             fireballs.RemoveAt(0);
             if (ball)
                 Destroy(ball);
@@ -284,7 +320,10 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
         foreach(var enemy in enemiesAlive)
         {
             if (enemy)
-                Destroy(enemy);
+            {
+                enemy.SetActive(false);
+                Destroy(enemy, 0.1f );
+            }
         }
     }
     #endregion takingDamage
