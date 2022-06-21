@@ -13996,6 +13996,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
+--- !u!114 &783421498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
+  m_PrefabInstance: {fileID: 783421497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0c889547b925745943d7289ea12f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &784117374
 GameObject:
   m_ObjectHideFlags: 0
@@ -17512,6 +17523,22 @@ PrefabInstance:
     - target: {fileID: 1808052833756677908, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.50000954
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981748242408723083, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 783421498}
+    - target: {fileID: 2981748242408723083, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaceBomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981748242408723083, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovementScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981748242408723083, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}

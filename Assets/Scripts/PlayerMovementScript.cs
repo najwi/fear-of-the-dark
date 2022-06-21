@@ -222,7 +222,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
-    private void PlaceBomb(){
+    public void PlaceBomb(){
         if(bombs > 0){
             bombs--;
             bombsText.text = bombs.ToString();
