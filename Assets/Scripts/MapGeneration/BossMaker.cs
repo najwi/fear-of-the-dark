@@ -44,7 +44,6 @@ public class BossMaker : MonoBehaviour
     public void SetDifficulty(int diff){
         Transform walls = null;
         Transform floor = null;
-        Transform obstacleTemplate = null;
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.name == "Walls"){
                 walls = roomElem;

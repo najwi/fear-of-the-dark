@@ -50,15 +50,19 @@ public class Menu : MonoBehaviour
 
         if(Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)){
             switch(option){
-                case 0: 
-                    SceneManager.LoadScene("Game"); 
-                    GameObject.FindGameObjectWithTag("Music").GetComponent<Music>().StopMusic(); 
-                    break;
+                case 0: StartGame(); break;
                 case 1: SceneManager.LoadScene("SettingsScene"); break;
-                case 2: Application.Quit(); break;
+                case 2: ExitGame(); break;
             }
-            
         }
+    }
+
+    public void StartGame(){
+        SceneManager.LoadScene("PlaymodeScene");
+    }
+
+    public void ExitGame(){
+        Application.Quit();
     }
 
     void UpdateMenu(){

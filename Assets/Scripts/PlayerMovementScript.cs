@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementScript : MonoBehaviour
@@ -14,16 +15,16 @@ public class PlayerMovementScript : MonoBehaviour
     public float bulletCooldown = 0.4f;
     private float currentBulletCooldown = 0f;
     public Animator animator;
-    public static int maxHp = 4;
+    public static int maxHp;
     public int maxHpUp = 1;
-    private static int currentHp;
-    public static int damage = 3;
+    public static int currentHp;
+    public static int damage;
     public int damageUp = 1;
-    public static float moveSpeed = 5f;
+    public static float moveSpeed;
     public float speedUp = 2f;
     public bool noDmg = false;
-    public static int notes = 3;
-    public static int bombs = 1;
+    public static int notes;
+    public static int bombs;
     public SpriteRenderer sprite;
     private bool alive = true;
     private int guiHeartsCount;
@@ -39,14 +40,19 @@ public class PlayerMovementScript : MonoBehaviour
     public AudioSource shootSound;
     private bool paused;
     public GameObject pauseText;
+    public GameObject player2;
+
+    public Joystick movementJoystick;
+    public Joystick attackJoystick;
+    public static bool multiplayer;    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();   
-        currentHp = maxHp;
         UpdateHud();
         AudioListener.volume = PlayerPrefs.GetFloat("volume", 0.5f);
         paused = false;
+        player2.SetActive(multiplayer);
     }
 
     private void Update()
@@ -93,8 +99,16 @@ public class PlayerMovementScript : MonoBehaviour
         if(paused)
             return;
 
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        float moveX = 0.0f;
+        float moveY = 0.0f;
+
+        if (movementJoystick.gameObject.activeSelf){
+            moveX = movementJoystick.Horizontal;
+            moveY = movementJoystick.Vertical;
+        }else{
+            moveX = Input.GetAxisRaw("Horizontal");
+            moveY = Input.GetAxisRaw("Vertical");;
+        }
 
         moveDirection = new Vector2(moveX, moveY);
 
@@ -129,30 +143,67 @@ public class PlayerMovementScript : MonoBehaviour
             animator.SetBool("RunBack", false);
         }
 
-        if(currentBulletCooldown <= 0){        
-            if(Input.GetKey("right")){
-                FireRight();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }else
+        float attackX = 0.0f;
+        float attackY = 0.0f;
 
-            if(Input.GetKey("left")){
-                FireLeft();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }else
+        if(currentBulletCooldown <= 0){     
+            if (movementJoystick.gameObject.activeSelf){
+                attackX = attackJoystick.Horizontal;
+                attackY = attackJoystick.Vertical;
+                if (Math.Abs(attackX) > Math.Abs(attackY)){
+                    attackY = 0.0f;
+                }else{
+                    attackX = 0.0f;
+                }
+                if(attackX > 0){
+                    FireRight();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
 
-            if(Input.GetKey("down")){
-                FireDown();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }else
+                if(attackX < 0){
+                    FireLeft();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
 
-            if(Input.GetKey("up")){
-                FireUp();
-                shootSound.Play();
-                currentBulletCooldown = bulletCooldown;
-            }
+                if(attackY < 0){
+                    FireDown();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(attackY > 0){
+                    FireUp();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }
+            }else{
+                if(Input.GetKey("right")){
+                    FireRight();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(Input.GetKey("left")){
+                    FireLeft();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(Input.GetKey("down")){
+                    FireDown();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }else
+
+                if(Input.GetKey("up")){
+                    FireUp();
+                    shootSound.Play();
+                    currentBulletCooldown = bulletCooldown;
+                }
+            }   
+            
         }
 
         if(Input.GetKeyDown("e")){
@@ -172,7 +223,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
     }
 
-    private void PlaceBomb(){
+    public void PlaceBomb(){
         if(bombs > 0){
             bombs--;
             bombsText.text = bombs.ToString();

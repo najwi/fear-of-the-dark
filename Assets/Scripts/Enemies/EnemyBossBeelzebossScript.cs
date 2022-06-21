@@ -258,7 +258,6 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     {
         if (currentHealth == 0)
             return;
-        damage *= 50;
         int damageTaken = ApplyDamageReduction(damage);
         currentHealth -= damageTaken;
         if (currentHealth <= 0)

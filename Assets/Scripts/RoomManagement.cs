@@ -15,7 +15,6 @@ public class RoomManagement : MonoBehaviour
     }
 
     void Update(){
-        int enemiesCount = 0;
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.CompareTag("ObstacleTemplate")){
                 foreach (Transform templateElem in roomElem){

@@ -12,7 +12,7 @@ public class RoomDesigner : MonoBehaviour
 
     void Start()
     {
-        // Invoke("Begin", 10.5f);
+        entryPoint.GetComponent<RoomManagement>().CloseDoors();
     }
 
     void Update(){
@@ -35,6 +35,8 @@ public class RoomDesigner : MonoBehaviour
         bossRoom.GetComponent<BossMaker>().checker.SetActive(true);
         MakeVariousDifficulty(entryPoint, 0);
         bossRoom.GetComponent<BossMaker>().MakeBossRoom();
+        ResetRoomsSpawned();
+        entryPoint.GetComponent<RoomManagement>().OpenDoors();
     }
 
     void FindBossRoom(GameObject adjacentRoom, int depth){
@@ -79,5 +81,10 @@ public class RoomDesigner : MonoBehaviour
         {
             MakeVariousDifficulty(room, depth + 1);
         }
+    }
+
+    void ResetRoomsSpawned(){
+        RoomGenerator.roomsSpawned = 0;
+        RoomGenerator.finished = false;
     }
 }
