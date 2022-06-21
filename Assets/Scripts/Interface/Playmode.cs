@@ -58,11 +58,15 @@ public class Playmode : MonoBehaviour
     }
 
     public void StartGameSingle(){
+        PlayerMovementScript.multiplayer = false;
+        PrepPlayer();
         music.StopMusic();
         SceneManager.LoadScene("Game");
     }
 
     public void StartGameMultiOffline(){
+        PlayerMovementScript.multiplayer = true;
+        PrepPlayer();
         music.StopMusic();
         SceneManager.LoadScene("Game");
     }
@@ -73,6 +77,15 @@ public class Playmode : MonoBehaviour
 
     public void Back(){
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void PrepPlayer(){
+        PlayerMovementScript.maxHp = 4;
+        PlayerMovementScript.moveSpeed = 5;
+        PlayerMovementScript.bombs = 2;
+        PlayerMovementScript.notes = 5;
+        PlayerMovementScript.damage = 3;
+        PlayerMovementScript.currentHp = 4;
     }
 
     void StartGame(){
