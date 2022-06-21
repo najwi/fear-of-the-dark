@@ -23,6 +23,7 @@ TagManager:
   - HealthPickup
   - Music
   - EnemyProjectile
+  - EnemyDefender
   layers:
   - Default
   - TransparentFX
