@@ -332,11 +332,11 @@ public class EnemySkeletonWarriorScript : MonoBehaviour, TakeBombDamageDecorator
             anim.SetTrigger("die");
             stop = true;
             isDead = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             movement = Vector2.zero;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         }
         else
             anim.SetTrigger("hit");
