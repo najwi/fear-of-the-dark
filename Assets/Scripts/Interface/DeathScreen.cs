@@ -3,12 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
-
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("space") || Input.GetKeyDown("escape")){
+        if (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
             SceneManager.LoadScene("MenuScene");
         }
     }
