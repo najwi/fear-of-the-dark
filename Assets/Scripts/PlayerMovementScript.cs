@@ -93,6 +93,12 @@ public class PlayerMovementScript : MonoBehaviour
             noDmg = !noDmg;
         }
 
+        if (Input.GetKeyDown("x"))
+        {
+            damage += 10;
+            damageText.text = damage.ToString();
+        }
+
         if(Input.GetKeyDown(KeyCode.Escape)){
             Pause();
         }

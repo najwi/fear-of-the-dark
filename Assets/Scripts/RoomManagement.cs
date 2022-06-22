@@ -6,7 +6,6 @@ public class RoomManagement : MonoBehaviour
 {
     public bool visited = false;
     public bool roomFinished = false;
-    public bool cleared = false;
     public AudioSource openDoorsSound;
     public AudioSource closeDoorsSound;
     private GameObject closedDoor;

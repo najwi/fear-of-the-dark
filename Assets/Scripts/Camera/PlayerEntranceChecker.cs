@@ -24,17 +24,13 @@ public class PlayerEntranceChecker : MonoBehaviour
             }else{
                 other.gameObject.GetComponent<Player2Movement>().player.transform.position = other.gameObject.transform.position;
             }
-            transform.parent.GetComponent<RoomManagement>().visited = true;
-        }
-        if(other.CompareTag("EnemyProjectile")){
-            Destroy(other.gameObject);
         }
         GameObject par = gameObject.transform.parent.gameObject;
         
-        if (par.name != "Shop"){
+        if (par.name != "Shop" ){
             RoomManagement parentRoomManager = par.GetComponent<RoomManagement>();
-            if (!parentRoomManager.cleared){
-                parentRoomManager.cleared = true;
+            if (!parentRoomManager.visited){
+                parentRoomManager.visited = true;
                 parentRoomManager.CloseDoors();
             }
         }
