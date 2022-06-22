@@ -25,9 +25,6 @@ public class PlayerEntranceChecker : MonoBehaviour
                 other.gameObject.GetComponent<Player2Movement>().player.transform.position = other.gameObject.transform.position;
             }
         }
-        if(other.CompareTag("EnemyProjectile")){
-            Destroy(other.gameObject);
-        }
         GameObject par = gameObject.transform.parent.gameObject;
         
         if (par.name != "Shop"){

@@ -16,6 +16,7 @@ public class RoomDesigner : MonoBehaviour
     }
 
     void Update(){
+        // Debug.Log();
         if(RoomGenerator.finished && control){
             started = true;
             control = false;

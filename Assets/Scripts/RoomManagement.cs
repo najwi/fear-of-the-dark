@@ -6,6 +6,7 @@ public class RoomManagement : MonoBehaviour
 {
     public bool visited = false;
     public bool roomFinished = false;
+    private bool control = true;
     private GameObject closedDoor;
     private GameObject openedDoor;
     private RoomTemplates templates;
@@ -29,9 +30,10 @@ public class RoomManagement : MonoBehaviour
                 // }
             }
         }
-        if (roomFinished){
+        if (roomFinished && control){
             OpenDoors();
             roomFinished = false;
+            control = false;
         }
     }
 
@@ -46,6 +48,9 @@ public class RoomManagement : MonoBehaviour
     }
 
     public void OpenDoors(){
+        Debug.Log("Open doors");
+        Debug.Log(gameObject.name);
+        Debug.Log(gameObject.transform.position);
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.CompareTag("Door")){
                 SpriteRenderer doorSpriteRenderer = roomElem.gameObject.GetComponent<SpriteRenderer>();

@@ -18,7 +18,7 @@ public class RoomGenerator : MonoBehaviour
     public bool leftDoor;
     public bool bottomDoor;
 
-    public static bool finished = false;
+    public static bool finished;
     
     public GameObject[] spawnPoints;
     private RoomTemplates templates;
@@ -44,6 +44,7 @@ public class RoomGenerator : MonoBehaviour
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         roomDesigner = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RoomDesigner>();
+        finished=false;
 
         switch (roomType){
             case 1:
