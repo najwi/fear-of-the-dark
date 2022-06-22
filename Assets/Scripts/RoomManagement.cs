@@ -18,28 +18,24 @@ public class RoomManagement : MonoBehaviour
     }
 
     void Update(){
-        if (gameObject.name != "Opened" && visited){
-            foreach (Transform roomElem in gameObject.transform){
-                if (roomElem.gameObject.CompareTag("ObstacleTemplate")){
-                    foreach (Transform templateElem in roomElem){
-                        if(templateElem.gameObject.name == "Enemies"){
-                            if (templateElem.childCount == 0){
-                                roomFinished = true;
-                            }
+        foreach (Transform roomElem in gameObject.transform){
+            if (roomElem.gameObject.CompareTag("ObstacleTemplate")){
+                foreach (Transform templateElem in roomElem){
+                    if(templateElem.gameObject.name == "Enemies"){
+                        if (templateElem.childCount == 0){
+                            roomFinished = true;
                         }
                     }
-                    // if (roomElem.childCount <= 2){
-                    //     roomFinished = true;
-                    // }
                 }
-            }
-            if (roomFinished && cleared){
-                OpenDoors();
-                roomFinished = false;
+                // if (roomElem.childCount <= 2){
+                //     roomFinished = true;
+                // }
             }
         }
-        
-        
+        if (roomFinished){
+            OpenDoors();
+            roomFinished = false;
+        }
     }
 
     public void CloseDoors(){
