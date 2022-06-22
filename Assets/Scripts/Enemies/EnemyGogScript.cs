@@ -226,6 +226,8 @@ public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
             anim.SetTrigger("die");
             isDead = true;
             movement = Vector2.zero;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else
