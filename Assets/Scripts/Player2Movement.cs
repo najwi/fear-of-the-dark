@@ -98,19 +98,19 @@ public class Player2Movement : MonoBehaviour
         float moveX = 0;
         float moveY = 0;
 
-        if (Input.GetKey("u")){
+        if (Input.GetKey("i")){
             moveY = 1;
         }
 
-        if (Input.GetKey("h")){
+        if (Input.GetKey("j")){
             moveX = -1;
         }
 
-        if (Input.GetKey("j")){
+        if (Input.GetKey("k")){
             moveY = -1;
         }
 
-        if (Input.GetKey("k")){
+        if (Input.GetKey("l")){
             moveX = 1;
         }
 
