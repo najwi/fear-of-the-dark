@@ -40,6 +40,7 @@ public class PlayerMovementScript : MonoBehaviour
     public AudioSource shootSound;
     private bool paused;
     public GameObject pauseText;
+    public GameObject pauseInfo;
     public GameObject player2;
 
     public Joystick movementJoystick;
@@ -94,6 +95,12 @@ public class PlayerMovementScript : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape)){
             Pause();
+        }
+
+        if(paused && Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.LoadScene("StartScene");
+            Time.timeScale = 1;
         }
 
         if(paused)
@@ -216,10 +223,12 @@ public class PlayerMovementScript : MonoBehaviour
             Time.timeScale = 0;
             paused = true;
             pauseText.SetActive(true);
+            pauseInfo.SetActive(true);
         }else{
             Time.timeScale = 1;
             paused = false;
             pauseText.SetActive(false);
+            pauseInfo.SetActive(false);
         }
     }
 

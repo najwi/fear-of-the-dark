@@ -19,6 +19,7 @@ public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
     public GameObject projectileRight;
     public GameObject projectileUp;
     public GameObject projectileBottom;
+    public AudioSource fireballAudio;
 
     private GameObject player;
     private PlayerMovementScript playerScript;
@@ -88,6 +89,7 @@ public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
         anim.SetBool("isMoving", false);
         anim.SetTrigger("attack");
         isNotAttacking = false;
+        fireballAudio.Play();
         SwitchCharacterDirection(player.transform.position - transform.position);
     }
 
@@ -223,6 +225,7 @@ public class EnemyGogScript : MonoBehaviour, TakeBombDamageDecorator
         { 
             anim.SetTrigger("die");
             isDead = true;
+            movement = Vector2.zero;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         else

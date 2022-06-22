@@ -6,6 +6,9 @@ public class RoomManagement : MonoBehaviour
 {
     public bool visited = false;
     public bool roomFinished = false;
+    public bool cleared = false;
+    public AudioSource openDoorsSound;
+    public AudioSource closeDoorsSound;
     private GameObject closedDoor;
     private GameObject openedDoor;
     private RoomTemplates templates;
@@ -15,7 +18,7 @@ public class RoomManagement : MonoBehaviour
     }
 
     void Update(){
-        if (gameObject.name != "Opened"){
+        if (gameObject.name != "Opened" && visited){
             foreach (Transform roomElem in gameObject.transform){
                 if (roomElem.gameObject.CompareTag("ObstacleTemplate")){
                     foreach (Transform templateElem in roomElem){
@@ -30,7 +33,7 @@ public class RoomManagement : MonoBehaviour
                     // }
                 }
             }
-            if (roomFinished){
+            if (roomFinished && cleared){
                 OpenDoors();
                 roomFinished = false;
             }
@@ -40,6 +43,7 @@ public class RoomManagement : MonoBehaviour
     }
 
     public void CloseDoors(){
+        closeDoorsSound.Play();
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.CompareTag("Door")){
                 SpriteRenderer doorSpriteRenderer = roomElem.gameObject.GetComponent<SpriteRenderer>();
@@ -50,6 +54,8 @@ public class RoomManagement : MonoBehaviour
     }
 
     public void OpenDoors(){
+        openDoorsSound.Play();
+        Debug.Log("Open doors" + gameObject.name);
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.CompareTag("Door")){
                 SpriteRenderer doorSpriteRenderer = roomElem.gameObject.GetComponent<SpriteRenderer>();
