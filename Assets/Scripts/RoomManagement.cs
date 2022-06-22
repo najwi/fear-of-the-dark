@@ -14,6 +14,8 @@ public class RoomManagement : MonoBehaviour
 
     void Start(){
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        closeDoorsSound.volume = 0.5f;
+        openDoorsSound.volume = 0.5f;
     }
 
     void Update(){

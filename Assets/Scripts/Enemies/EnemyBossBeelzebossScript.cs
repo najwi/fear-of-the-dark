@@ -13,6 +13,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     public GameObject enemyPortalPrefab;
     public BossHealthBarScript healthBar;
     public GameObject[] lavaToDelete;
+    public AudioSource fireballSound;
     public int health = 500;
     public float attacksDelayTime = 3;
     public int fireballsCount = 10;
@@ -124,6 +125,7 @@ public class EnemyBossBeelzebossScript : MonoBehaviour, TakeBombDamageDecorator
     private IEnumerator SpawnFireballWithDelay(float delay, float offsetX, bool last, Vector2 target)
     {
         yield return new WaitForSeconds(delay);
+        fireballSound.Play();
         var ball = Instantiate(fireball);
         ball.transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
         fireballs.Add(ball);
