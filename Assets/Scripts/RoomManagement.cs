@@ -6,7 +6,12 @@ public class RoomManagement : MonoBehaviour
 {
     public bool visited = false;
     public bool roomFinished = false;
+<<<<<<< HEAD
     private bool control = true;
+=======
+    public AudioSource openDoorsSound;
+    public AudioSource closeDoorsSound;
+>>>>>>> dc560072c19735260be25ac1973f9f5e07349b07
     private GameObject closedDoor;
     private GameObject openedDoor;
     private RoomTemplates templates;
@@ -38,6 +43,7 @@ public class RoomManagement : MonoBehaviour
     }
 
     public void CloseDoors(){
+        closeDoorsSound.Play();
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.CompareTag("Door")){
                 SpriteRenderer doorSpriteRenderer = roomElem.gameObject.GetComponent<SpriteRenderer>();
@@ -48,9 +54,8 @@ public class RoomManagement : MonoBehaviour
     }
 
     public void OpenDoors(){
-        Debug.Log("Open doors");
-        Debug.Log(gameObject.name);
-        Debug.Log(gameObject.transform.position);
+        openDoorsSound.Play();
+        Debug.Log("Open doors" + gameObject.name);
         foreach (Transform roomElem in gameObject.transform){
             if (roomElem.gameObject.CompareTag("Door")){
                 SpriteRenderer doorSpriteRenderer = roomElem.gameObject.GetComponent<SpriteRenderer>();

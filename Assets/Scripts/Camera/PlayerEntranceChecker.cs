@@ -27,7 +27,7 @@ public class PlayerEntranceChecker : MonoBehaviour
         }
         GameObject par = gameObject.transform.parent.gameObject;
         
-        if (par.name != "Shop"){
+        if (par.name != "Shop" ){
             RoomManagement parentRoomManager = par.GetComponent<RoomManagement>();
             if (!parentRoomManager.visited){
                 parentRoomManager.visited = true;

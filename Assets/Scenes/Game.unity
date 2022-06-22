@@ -356,6 +356,11 @@ PrefabInstance:
       objectReference: {fileID: 2097061092}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+--- !u!1 &4665394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4905751206117965248, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+  m_PrefabInstance: {fileID: 4665393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &28238556 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1400543268954661878, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
@@ -552,6 +557,10 @@ PrefabInstance:
       propertyPath: notesText
       value: 
       objectReference: {fileID: 654139576}
+    - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
+      propertyPath: pauseInfo
+      value: 
+      objectReference: {fileID: 4665394}
     - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
       propertyPath: pauseText
       value: 

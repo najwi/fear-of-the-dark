@@ -10,8 +10,7 @@ public class Playmode : MonoBehaviour
     private int option = 0;
     //0 - single
     //1 - multi offline
-    //2 - multi online
-    //3 - back
+    //2 - back
 
     private Music music;
     public List<GameObject> texts;
@@ -51,8 +50,7 @@ public class Playmode : MonoBehaviour
             switch(option){
                 case 0: StartGameSingle(); break;
                 case 1: StartGameMultiOffline(); break;
-                case 2: StartGameMultiOnline(); break;
-                case 3: Back(); break;
+                case 2: Back(); break;
             }
         }
     }
@@ -69,10 +67,6 @@ public class Playmode : MonoBehaviour
         PrepPlayer();
         music.StopMusic();
         SceneManager.LoadScene("Game");
-    }
-
-    public void StartGameMultiOnline(){
-
     }
 
     public void Back(){
