@@ -44,7 +44,6 @@ public class RoomGenerator : MonoBehaviour
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         roomDesigner = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RoomDesigner>();
-        finished=false;
 
         switch (roomType){
             case 1:
@@ -100,8 +99,12 @@ public class RoomGenerator : MonoBehaviour
         }
         else{
             Invoke("SpawnClosedRoom", 0.1f);
-            finished = true;
+            Invoke("FinishIt", 0.2f);
         }
+    }
+
+    void FinishIt(){
+        finished = true;
     }
 
     void SpawnRoom(){

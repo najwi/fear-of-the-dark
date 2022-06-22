@@ -7,6 +7,8 @@ public class DoorProjectileController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("AllyProjectile")){
             Destroy(other.gameObject);
+        }else if(other.CompareTag("EnemyProjectile")){
+            Destroy(other.gameObject);
         }
     }
 }

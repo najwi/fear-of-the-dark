@@ -9,22 +9,29 @@ public class RoomDesigner : MonoBehaviour
     public static GameObject bossRoom;
     private bool started = false;
     private bool control = true;
+    private bool generated;
 
     void Start()
     {
+        generated = false;
         entryPoint.GetComponent<RoomManagement>().CloseDoors();
+        RoomGenerator.finished = false;
+        Invoke("FixBegin", 10.5f);
     }
 
     void Update(){
-        // Debug.Log();
         if(RoomGenerator.finished && control){
             started = true;
             control = false;
         }
         if(started){
-            Invoke("Begin", 0.5f);
+            Invoke("Begin", 1.5f);
             started = false;
         }
+    }
+
+    void FixBegin(){
+        RoomGenerator.finished = true;
     }
 
     public void Begin(){
@@ -83,9 +90,13 @@ public class RoomDesigner : MonoBehaviour
         }
     }
 
+    void FalseRoomGenerator(){
+        RoomGenerator.finished = false;
+    }
+
     void ResetRoomsSpawned(){
         RoomGenerator.roomsSpawned = 0;
-        RoomGenerator.finished = false;
+        Invoke("FalseRoomGenerator", 0.1f);
         entryPoint.GetComponent<RoomManagement>().OpenDoors();
     }
 }
