@@ -1,5 +1,6 @@
 # Fear of the dark - 2d Dungeon Crawler made with Unity Engine.
-&nbsp;
+![screen1](./screen1.png)
+![screen2](./screen2.png)
 &nbsp;
 &nbsp;
 
@@ -112,5 +113,4 @@ są Nutki.
 # 8. Grafika
   Grafika pikselowa z nastawieniem na ciemny motyw. Paleta głównych kolorów to czarny, czerwony, szary, zółty, brązowy.
 Tło podziemii, lochu lub piekła. Przeciwnicy w podobnym motywie: nieumarli, demony. <br />
-Przykładowa scena:
-![Scene1](./screenshots/scene1.png)
+
