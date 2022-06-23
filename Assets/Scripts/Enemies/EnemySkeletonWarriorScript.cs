@@ -24,7 +24,6 @@ public class EnemySkeletonWarriorScript : MonoBehaviour, TakeBombDamageDecorator
     private GameObject protectedGog;
     private PlayerMovementScript playerScript;
     private Rigidbody2D rb;
-    private SpriteRenderer sprite;
     private Animator anim;
 
     private Vector2 movement;
@@ -32,7 +31,6 @@ public class EnemySkeletonWarriorScript : MonoBehaviour, TakeBombDamageDecorator
     private bool stop = false;
     private bool isDead = false;
     private bool isAnyGogAlive = false;
-    private int lastDir = 0;
 
     private void OnEnable()
     {
@@ -118,7 +116,6 @@ public class EnemySkeletonWarriorScript : MonoBehaviour, TakeBombDamageDecorator
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerMovementScript>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        sprite = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
         isNotAttacking = false;
         StartCoroutine(EnableActionOnStart());
@@ -337,6 +334,9 @@ public class EnemySkeletonWarriorScript : MonoBehaviour, TakeBombDamageDecorator
             isDead = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            movement = Vector2.zero;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0;
         }
         else
             anim.SetTrigger("hit");

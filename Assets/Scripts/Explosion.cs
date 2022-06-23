@@ -14,7 +14,7 @@ public class Explosion : MonoBehaviour
         }
         else if (col.gameObject.CompareTag("Player"))
         {
-            col.GetComponent<PlayerMovementScript>().TakeDamage(1);
+            col.gameObject.GetComponent<PlayerMovementScript>().TakeDamage(1);
         }
 
     }

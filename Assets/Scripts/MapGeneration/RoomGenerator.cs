@@ -18,7 +18,7 @@ public class RoomGenerator : MonoBehaviour
     public bool leftDoor;
     public bool bottomDoor;
 
-    public static bool finished = false;
+    public static bool finished;
     
     public GameObject[] spawnPoints;
     private RoomTemplates templates;
@@ -99,8 +99,12 @@ public class RoomGenerator : MonoBehaviour
         }
         else{
             Invoke("SpawnClosedRoom", 0.1f);
-            finished = true;
+            Invoke("FinishIt", 0.2f);
         }
+    }
+
+    void FinishIt(){
+        finished = true;
     }
 
     void SpawnRoom(){

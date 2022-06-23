@@ -14947,6 +14947,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2118063614}
     - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
+      propertyPath: pauseInfo
+      value: 
+      objectReference: {fileID: 998105698}
+    - target: {fileID: 1400543268954661877, guid: 20379410a2c5fe04a8db2da2c46b868c, type: 3}
       propertyPath: pauseText
       value: 
       objectReference: {fileID: 1773035656}
@@ -18984,6 +18988,11 @@ RectTransform:
 --- !u!1 &998105697 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 201356961940067532, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
+  m_PrefabInstance: {fileID: 998105694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &998105698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4905751206117965248, guid: bf25bf90fb6d3f642921c2c27c8e7b16, type: 3}
   m_PrefabInstance: {fileID: 998105694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1001520956
@@ -37713,7 +37722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1400543268954661878, guid: 643df34ce8be96c498e8c5a6229a9b39, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7052135994649897990, guid: 643df34ce8be96c498e8c5a6229a9b39, type: 3}
       propertyPath: player
