@@ -16,7 +16,7 @@ public class RoomDesigner : MonoBehaviour
         generated = false;
         entryPoint.GetComponent<RoomManagement>().CloseDoors();
         RoomGenerator.finished = false;
-        Invoke("FixBegin", 10.5f);
+        //Invoke("FixBegin", 10.5f);
     }
 
     void Update(){
@@ -30,7 +30,7 @@ public class RoomDesigner : MonoBehaviour
         }
     }
 
-    void FixBegin(){
+    public void FixBegin(){
         RoomGenerator.finished = true;
     }
 

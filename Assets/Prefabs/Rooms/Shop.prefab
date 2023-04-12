@@ -11213,6 +11213,7 @@ MonoBehaviour:
   bottomSpawnPoint: {fileID: 0}
   leftSpawnPoint: {fileID: 4493507593054500508}
   adjacentRooms: []
+  generatedFrom: {fileID: 0}
 --- !u!61 &4493507593802852589
 BoxCollider2D:
   m_ObjectHideFlags: 0

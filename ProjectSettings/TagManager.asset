@@ -24,6 +24,7 @@ TagManager:
   - Music
   - EnemyProjectile
   - EnemyDefender
+  - RoomManager
   layers:
   - Default
   - TransparentFX
